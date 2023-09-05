@@ -1,9 +1,8 @@
 @use "../utils/variables" as *;
-$number-of-items: 5;
+$number-of-items: 3;
 .container {
-  .text {
-  }
-  .options {
+
+  .difficulty {
     display: flex;
     font-size: 4rem;
     font-weight: bold;
@@ -11,7 +10,7 @@ $number-of-items: 5;
     overflow: hidden;
     margin: 20px 0;
     color: $darkerGray;
-    .op {
+    .di {
       opacity: 0;
       transition: all 0.3s ease-in-out;
       background-color: $darkerGray;
@@ -19,7 +18,7 @@ $number-of-items: 5;
       border-radius: 10px;
       color: #2f4858;
     }
-    .op.active {
+    .di.active {
       opacity: 1;
       transform: scale(0.9);
       transition-duration: 0.3s;
@@ -38,11 +37,11 @@ $number-of-items: 5;
       }
     }
     @for $i from 1 through $number-of-items {
-      .op-#{$i} {
+      .di-#{$i} {
         padding-left: 10px;
         display: none;
       }
-      .op-#{$i}.active {
+      .di-#{$i}.active {
         display: inherit;
       }
     }

@@ -57,6 +57,7 @@ a {
   background-image: linear-gradient(305deg, #e2494c, #2f4858, cyan);
   text-transform: uppercase;
   letter-spacing: 5px;
+  min-height: 100px;
 }
 
 .container .options {
@@ -126,6 +127,62 @@ a {
   display: none;
 }
 .container .options .op-5.active {
+  display: inherit;
+}
+
+.container .difficulty {
+  display: flex;
+  font-size: 4rem;
+  font-weight: bold;
+  gap: 20px;
+  overflow: hidden;
+  margin: 20px 0;
+  color: #d1d1d1;
+}
+.container .difficulty .di {
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  background-color: #d1d1d1;
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: #2f4858;
+}
+.container .difficulty .di.active {
+  opacity: 1;
+  transform: scale(0.9);
+  transition-duration: 0.3s;
+  animation: slide-in-top 0.3s both;
+}
+@keyframes slide-in-top {
+  0% {
+    transform: translateY(77px);
+    opacity: 0;
+    filter: blur(10px);
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.container .difficulty .di-1 {
+  padding-left: 10px;
+  display: none;
+}
+.container .difficulty .di-1.active {
+  display: inherit;
+}
+.container .difficulty .di-2 {
+  padding-left: 10px;
+  display: none;
+}
+.container .difficulty .di-2.active {
+  display: inherit;
+}
+.container .difficulty .di-3 {
+  padding-left: 10px;
+  display: none;
+}
+.container .difficulty .di-3.active {
   display: inherit;
 }
 
