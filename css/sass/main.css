@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Iso&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+body {
+  background-color: #fff;
+  background: linear-gradient(135deg, rgb(226, 73, 76), rgb(255, 255, 255));
+  min-height: 100vh;
+  font-family: Tahoma;
+  font-size: 16px;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+* {
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+  margin: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width:768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width:992px) {
+  .container {
+    width: 970px;
+  }
+}
+@media (min-width:1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+.header .container p {
+  text-align: center;
+  font-size: 4rem;
+  font-weight: bold;
+  color: #fff;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  background-image: linear-gradient(305deg, #e2494c, #2f4858, cyan);
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+
+.container .options {
+  display: flex;
+  font-size: 4rem;
+  font-weight: bold;
+  gap: 20px;
+  overflow: hidden;
+  margin: 20px 0;
+  color: #d1d1d1;
+}
+.container .options .op {
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  background-color: #d1d1d1;
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: #2f4858;
+}
+.container .options .op.active {
+  opacity: 1;
+  transform: scale(0.9);
+  transition-duration: 0.3s;
+  animation: slide-in-top 0.3s both;
+}
+@keyframes slide-in-top {
+  0% {
+    transform: translateY(77px);
+    opacity: 0;
+    filter: blur(10px);
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.container .options .op-1 {
+  padding-left: 10px;
+  display: none;
+}
+.container .options .op-1.active {
+  display: inherit;
+}
+.container .options .op-2 {
+  padding-left: 10px;
+  display: none;
+}
+.container .options .op-2.active {
+  display: inherit;
+}
+.container .options .op-3 {
+  padding-left: 10px;
+  display: none;
+}
+.container .options .op-3.active {
+  display: inherit;
+}
+.container .options .op-4 {
+  padding-left: 10px;
+  display: none;
+}
+.container .options .op-4.active {
+  display: inherit;
+}
+.container .options .op-5 {
+  padding-left: 10px;
+  display: none;
+}
+.container .options .op-5.active {
+  display: inherit;
+}
+
+/*Start Footer*/
+/*End Footer*//*# sourceMappingURL=main.css.map */
