@@ -4,12 +4,12 @@ let welcomeMassege = document.querySelector(".welcome-massege");
 // Animate Text
 let i = 0;
 let milliseconds = 100;
-let editorTitle = "Welcome to the Quiz App!";
+let welcomeMassegeText = "Welcome to the Quiz App!";
 function startTextAnimation() {
   let textInterval = setInterval(() => {
-    welcomeMassege.textContent += editorTitle[i];
+    welcomeMassege.textContent += welcomeMassegeText[i];
     i++;
-    if (i === editorTitle.length) {
+    if (i === welcomeMassegeText.length) {
       i = 0;
       clearInterval(textInterval);
       setTimeout(() => {
@@ -18,6 +18,7 @@ function startTextAnimation() {
       }, 2000);
     }
   }, milliseconds);
+
 }
 startTextAnimation();
 

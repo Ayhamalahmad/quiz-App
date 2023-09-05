@@ -130,14 +130,25 @@ a {
   display: inherit;
 }
 
+.container .animate-se {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 20px;
+  flex-wrap: wrap;
+  width: 100%;
+}
 .container .difficulty {
+  text-transform: capitalize;
+  justify-content: end;
   display: flex;
   font-size: 4rem;
   font-weight: bold;
   gap: 20px;
   overflow: hidden;
   margin: 20px 0;
-  color: #d1d1d1;
+  color: #2f4858;
+  flex-direction: row-reverse;
 }
 .container .difficulty .di {
   opacity: 0;

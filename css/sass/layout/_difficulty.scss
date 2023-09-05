@@ -1,15 +1,26 @@
 @use "../utils/variables" as *;
 $number-of-items: 3;
 .container {
+  .animate-se {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 20px;
+    flex-wrap: wrap;
+    width: 100%;
 
+  }
   .difficulty {
+    text-transform: capitalize;
+    justify-content: end;
     display: flex;
     font-size: 4rem;
     font-weight: bold;
     gap: 20px;
     overflow: hidden;
     margin: 20px 0;
-    color: $darkerGray;
+    color: #2f4858;
+    flex-direction:row-reverse;
     .di {
       opacity: 0;
       transition: all 0.3s ease-in-out;
