@@ -149,6 +149,7 @@ a {
   margin: 20px 0;
   color: #2f4858;
   flex-direction: row-reverse;
+  align-items: center;
 }
 .container .difficulty .di {
   opacity: 0;

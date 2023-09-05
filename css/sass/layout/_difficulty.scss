@@ -8,7 +8,6 @@ $number-of-items: 3;
     gap: 20px;
     flex-wrap: wrap;
     width: 100%;
-
   }
   .difficulty {
     text-transform: capitalize;
@@ -19,15 +18,16 @@ $number-of-items: 3;
     gap: 20px;
     overflow: hidden;
     margin: 20px 0;
-    color: #2f4858;
-    flex-direction:row-reverse;
+    color: $darkBlueColor;
+    flex-direction: row-reverse;
+    align-items: center;
     .di {
       opacity: 0;
       transition: all 0.3s ease-in-out;
       background-color: $darkerGray;
       padding: 10px 20px;
       border-radius: 10px;
-      color: #2f4858;
+      color: $darkBlueColor;
     }
     .di.active {
       opacity: 1;
