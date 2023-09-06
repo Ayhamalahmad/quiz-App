@@ -46,6 +46,9 @@ a {
   }
 }
 
+.header {
+  transition: all 0.3s ease-in-out;
+}
 .header .container p {
   text-align: center;
   font-size: 4rem;
@@ -58,6 +61,7 @@ a {
   text-transform: uppercase;
   letter-spacing: 5px;
   min-height: 100px;
+  /* Apply the animation to the element */
 }
 
 .container .options {
@@ -68,13 +72,14 @@ a {
   overflow: hidden;
   margin: 20px 0;
   color: #d1d1d1;
+  text-transform: capitalize;
 }
 .container .options .op {
   opacity: 0;
   transition: all 0.3s ease-in-out;
-  background-color: #d1d1d1;
   padding: 10px 20px;
   border-radius: 10px;
+  background-color: #d1d1d1;
   color: #2f4858;
 }
 .container .options .op.active {
@@ -198,5 +203,53 @@ a {
   display: inherit;
 }
 
+.op-to-select {
+  font-size: 30px;
+  text-align: center;
+}
+.op-to-select .text {
+  text-align: start;
+  color: #ddd;
+}
+.op-to-select .ots-one-c .ots-one {
+  background-color: #d1d1d1;
+  color: #2f4858;
+  cursor: pointer;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+.op-to-select .ots-one-c .ots-one p {
+  margin: 0;
+}
+.op-to-select .ots-one-c .ots-one .dropdown-icon {
+  margin-left: 10px;
+}
+.op-to-select .ots-one-c .dropdown-ots {
+  display: none;
+}
+.op-to-select .ots-one-c .dropdown-ots.active {
+  display: inherit;
+}
+.op-to-select .ots-one-c .dropdown-ots .ots-1 {
+  padding-left: 10px;
+}
+.op-to-select .ots-one-c .dropdown-ots .ots-2 {
+  padding-left: 10px;
+}
+.op-to-select .ots-one-c .dropdown-ots .ots-3 {
+  padding-left: 10px;
+}
+.op-to-select .ots-one-c .dropdown-ots .ots-4 {
+  padding-left: 10px;
+}
+.op-to-select .ots-one-c .dropdown-ots .ots-5 {
+  padding-left: 10px;
+}
 /*Start Footer*/
 /*End Footer*//*# sourceMappingURL=main.css.map */

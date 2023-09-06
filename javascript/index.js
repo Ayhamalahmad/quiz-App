@@ -1,5 +1,9 @@
 // Select relevant elements
 let welcomeMassege = document.querySelector(".welcome-massege");
+// 
+let Btn_ots_one = document.querySelector(".ots-one");
+let dropdownOtsOne = document.querySelector(".dropdown-ots");
+
 // Set interval
 // Animate Text
 let i = 0;
@@ -66,3 +70,14 @@ const updateActiveOptions = () => {
 
 // Set an interval to update both category and difficulty options every 2 seconds (2000 milliseconds)
 setInterval(updateActiveOptions, 2000);
+
+// Function To Toggle class 
+const toggleClass=(element,className)=>{
+element.classList.toggle(className)
+}
+// Function To Add class 
+const addClass=(element,className)=>{
+element.classList.add(className)
+}
+// Events
+Btn_ots_one.addEventListener("click",()=>{toggleClass(dropdownOtsOne,"active")})

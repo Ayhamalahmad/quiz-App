@@ -1,8 +1,7 @@
 @use "../utils/variables" as *;
 $number-of-items: 5;
 .container {
-  .text {
-  }
+  
   .options {
     display: flex;
     font-size: 4rem;
@@ -11,13 +10,14 @@ $number-of-items: 5;
     overflow: hidden;
     margin: 20px 0;
     color: $darkerGray;
+    text-transform: capitalize;
     .op {
       opacity: 0;
       transition: all 0.3s ease-in-out;
-      background-color: $darkerGray;
       padding: 10px 20px;
       border-radius: 10px;
-      color: #2f4858;
+      background-color: $darkerGray;
+      color: $darkBlueColor;
     }
     .op.active {
       opacity: 1;

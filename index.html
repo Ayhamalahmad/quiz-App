@@ -6,7 +6,11 @@
     <link rel="stylesheet" href="css/all.min.css" />
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/sass/main.css" />
-    <link rel="shortcut icon" href="imges/icons8-quiz-100.png" type="image/x-icon" />
+    <link
+      rel="shortcut icon"
+      href="imges/icons8-quiz-100.png"
+      type="image/x-icon"
+    />
     <title>Quiz App</title>
   </head>
   <body>
@@ -26,22 +30,39 @@
           <div class="op op-5">Linux</div>
         </div>
         <div class="difficulty">
-            difficulty
-          
+          difficulty
+
           <div class="di di-1 active">Easy</div>
           <div class="di di-2">Medium</div>
           <div class="di di-3">Hard</div>
         </div>
-
       </div>
-      <p class="text">
-        plase select ther options to start play
-      </p>
 
       <div class="op-to-select">
-        <div class="ots-one">select Category</div>
+        <p class="text">plase select ther options to start play</p>
+        <div class="ots-one-c">
+          <button class="ots-one">
+            <p>select Category</p>
+            <i class="fas fa-sort-up dropdown-icon"></i>
+          </button>
+          <div class="dropdown-ots">
+            <div class="ots ots-1 active">Code</div>
+            <div class="ots ots-2">DevOps</div>
+            <div class="ots ots-3">SQL</div>
+            <div class="ots ots-4">Docker</div>
+            <div class="ots ots-5">Linux</div>
+          </div>
+        </div>
+
         <div class="ots-two">select number of Questions</div>
-        <div class="ots-three"></div>
+        <div class="dropdown-otsn">
+          <div class="otn otn-1">10</div>
+          <div class="otn otn-2">20</div>
+          <div class="otn otn-3">30</div>
+          <div class="otn otn-4">all</div>
+        </div>
+        <div class="ots-three">name</div>
+        <input type="text" placeholder="your name" />
       </div>
     </div>
     <script src="javascript/index.js"></script>
