@@ -1,8 +1,15 @@
+// https://www.codu.co/articles/5-free-trivia-api-s-to-create-your-own-quiz-app-eoui-a7i
+// https://quizapi.io/
 // Select relevant elements
 let welcomeMassege = document.querySelector(".welcome-massege");
-// 
-let Btn_ots_one = document.querySelector(".ots-one");
-let dropdownOtsOne = document.querySelector(".dropdown-ots");
+//
+let dropdownOneBtn = document.querySelector(".dropdown-one-btn");
+let dropdownOneP = document.querySelector(".dropdown-one-btn p");
+let dropdownOtsOne = document.querySelector(".dropdown-options-container");
+let dropdownIcon = document.querySelector(".dropdown-icon");
+let dropdownOneDivs = document.querySelectorAll(
+  ".dropdown-options-container div"
+);
 
 // Set interval
 // Animate Text
@@ -22,7 +29,6 @@ function startTextAnimation() {
       }, 2000);
     }
   }, milliseconds);
-
 }
 startTextAnimation();
 
@@ -71,13 +77,33 @@ const updateActiveOptions = () => {
 // Set an interval to update both category and difficulty options every 2 seconds (2000 milliseconds)
 setInterval(updateActiveOptions, 2000);
 
-// Function To Toggle class 
-const toggleClass=(element,className)=>{
-element.classList.toggle(className)
-}
-// Function To Add class 
-const addClass=(element,className)=>{
-element.classList.add(className)
-}
-// Events
-Btn_ots_one.addEventListener("click",()=>{toggleClass(dropdownOtsOne,"active")})
+// Function To Toggle class
+const toggleClass = (element, className) => {
+  element.classList.toggle(className);
+};
+// Function To Add class
+const addClass = (element, className) => {
+  element.classList.add(className);
+};
+// Toggle the "active" class on Dropdown One and its icon when Dropdown One Button is clicked
+dropdownOneBtn.addEventListener("click", () => {
+  toggleClass(dropdownOtsOne, "active");
+  toggleClass(dropdownIcon, "active");
+});
+//
+dropdownOneDivs.forEach((div) => {
+  div.addEventListener("click", (e) => {
+    if (dropdownOneDivs) {
+      dropdownOneP.textContent = "";
+      let text = document.createTextNode(e.target.textContent);
+      dropdownOneP.appendChild(text);
+      if (
+        dropdownOtsOne.classList.contains("active") &&
+        dropdownIcon.classList.contains("active")
+      ) {
+        dropdownOtsOne.classList.remove("active");
+        dropdownIcon.classList.remove("active");
+      }
+    }
+  });
+});

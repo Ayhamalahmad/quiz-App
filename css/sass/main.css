@@ -211,7 +211,10 @@ a {
   text-align: start;
   color: #ddd;
 }
-.op-to-select .ots-one-c .ots-one {
+.op-to-select .dropdown-one-container {
+  overflow: hidden;
+}
+.op-to-select .dropdown-one-container .dropdown-one-btn {
   background-color: #d1d1d1;
   color: #2f4858;
   cursor: pointer;
@@ -223,33 +226,69 @@ a {
   margin: auto;
   padding: 10px 20px;
   border-radius: 10px;
+  gap: 20px;
 }
-.op-to-select .ots-one-c .ots-one p {
+.op-to-select .dropdown-one-container .dropdown-one-btn p {
   margin: 0;
 }
-.op-to-select .ots-one-c .ots-one .dropdown-icon {
+.op-to-select .dropdown-one-container .dropdown-one-btn .dropdown-icon {
+  transform: rotate(181deg);
   margin-left: 10px;
+  transition: all 0.3s ease-in-out;
 }
-.op-to-select .ots-one-c .dropdown-ots {
+.op-to-select .dropdown-one-container .dropdown-one-btn .dropdown-icon.active {
+  transform: rotate(-1deg);
+}
+.op-to-select .dropdown-one-container .dropdown-options-container {
+  display: none;
+  background-color: red;
+  border-radius: 22px;
+  color: white;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+.op-to-select .dropdown-one-container .dropdown-options-container.active {
+  display: inherit;
+  opacity: 1;
+  transform: scale(0.9);
+  transition-duration: 0.3s;
+  animation: slide-in-top 0.3s both;
+}
+.op-to-select .dropdown-one-container .dropdown-options-container div {
+  padding: 10px;
+  cursor: pointer;
+}
+.op-to-select .dropdown-one-container .dropdown-options-container div.inactive {
   display: none;
 }
-.op-to-select .ots-one-c .dropdown-ots.active {
-  display: inherit;
+.op-to-select .dropdown-one-container .dropdown-options-container div.active {
+  display: block;
 }
-.op-to-select .ots-one-c .dropdown-ots .ots-1 {
+.op-to-select .dropdown-one-container .dropdown-options-container .ots-1 {
   padding-left: 10px;
 }
-.op-to-select .ots-one-c .dropdown-ots .ots-2 {
+.op-to-select .dropdown-one-container .dropdown-options-container .ots-2 {
   padding-left: 10px;
 }
-.op-to-select .ots-one-c .dropdown-ots .ots-3 {
+.op-to-select .dropdown-one-container .dropdown-options-container .ots-3 {
   padding-left: 10px;
 }
-.op-to-select .ots-one-c .dropdown-ots .ots-4 {
+.op-to-select .dropdown-one-container .dropdown-options-container .ots-4 {
   padding-left: 10px;
 }
-.op-to-select .ots-one-c .dropdown-ots .ots-5 {
+.op-to-select .dropdown-one-container .dropdown-options-container .ots-5 {
   padding-left: 10px;
+}
+@keyframes slide-in-top {
+  0% {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(-273px);
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 /*Start Footer*/
 /*End Footer*//*# sourceMappingURL=main.css.map */
