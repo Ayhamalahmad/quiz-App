@@ -3,9 +3,40 @@
 // Select  elements
 // Welcome Massege
 let welcomeMassege = document.querySelector(".welcome-massege");
-//
+//  Questions Dropdown
+let questionsDropdownDivs = document.querySelectorAll(
+  ".questions-dropdown div"
+);
+let questionsP = document.querySelector(
+  ".questions-dropdown .dropdown-button p"
+);
+let questionsOption = document.querySelector(
+  ".questions-dropdown .questions-options"
+);
+let questionsIcon = document.querySelector(
+  ".questions-dropdown .dropdown-icon"
+);
+// Category Dropdown
+let categoryDropdown = document.querySelector(".category-dropdown");
+let categoryDropdownDivs = document.querySelectorAll(".category-dropdown div");
+let categoryP = document.querySelector(".category-dropdown .dropdown-button p");
+let categoryIcon = document.querySelector(
+  ".category-dropdown .dropdown-button .dropdown-icon"
+);
+let categoryOption = document.querySelector(
+  ".category-dropdown  .category-options"
+);
+// Select all the dropdown buttons, options, and icons
+let dropdownButtons = document.querySelectorAll(".dropdown-button");
+let dropdownOptions = document.querySelectorAll(".dropdown-options");
+let dropdownIcons = document.querySelectorAll(".dropdown-icon");
+// neede Attention 
 let dropdownOneBtn = document.querySelector(".dropdown-one-btn");
 let dropdownIcon = document.querySelector(".dropdown-icon");
+//
+let dropdownOneDivs = document.querySelectorAll(".dropdown-options .option");
+let dropdownOneP = document.querySelectorAll(".dropdown-button p");
+// neede Attention 
 // Initialize variables
 let i = 0; // Index to track the current character
 let milliseconds = 100; // Time delay between adding characters
@@ -88,11 +119,6 @@ const toggleClass = (element, className) => {
 const addClass = (element, className) => {
   element.classList.add(className);
 };
-// Select all the dropdown buttons, options, and icons
-let dropdownButtons = document.querySelectorAll(".dropdown-button");
-let dropdownOptions = document.querySelectorAll(".dropdown-options");
-let dropdownIcons = document.querySelectorAll(".dropdown-icon");
-
 // Add a click event listener to each dropdown button
 dropdownButtons.forEach((button, index) => {
   button.addEventListener("click", () => {
@@ -102,53 +128,32 @@ dropdownButtons.forEach((button, index) => {
     toggleClass(dropdownIcons[index], "active");
   });
 });
-//
-let dropdownOneDivs = document.querySelectorAll(".dropdown-options .option");
-let dropdownOneP = document.querySelectorAll(".dropdown-button p");
-
-//category-options
-let categoryDropdown = document.querySelector(".category-dropdown");
-let categoryDropdownDivs = document.querySelectorAll(".category-dropdown div");
-let categoryP = document.querySelector(".category-dropdown .dropdown-button p");
-let categoryIcon = document.querySelector(
-  ".category-dropdown .dropdown-button .dropdown-icon"
-);
-let categoryOption = document.querySelector(
-  ".category-dropdown  .category-options"
-);
-
-categoryDropdownDivs.forEach((div, index) => {
-  div.addEventListener("click", (e) => {
-    handleText(categoryP, e.target.textContent);
-    handleClass(categoryOption, categoryIcon);
+// Function to handle the click event for a dropdown
+function handleDropdownClick(options, buttonText, icon) {
+  options.forEach((option, index) => {
+    option.addEventListener("click", (e) => {
+      handleText(buttonText, e.target.textContent);
+      handleClass(options[index], icon);
+    });
   });
-});
-// questions-dropdown
-let questionsDropdownDivs =document.querySelectorAll('.questions-dropdown div');
-let questionsP=document.querySelector('.questions-dropdown .dropdown-button p');
-let questionsOption=document.querySelector('.questions-dropdown .questions-options');
-let questionsIcon=document.querySelector('.questions-dropdown .dropdown-icon');
-
-questionsDropdownDivs.forEach((div, index) => {
-  div.addEventListener("click", (e) => {
-    handleText(questionsP, e.target.textContent);
-    handleClass(questionsOption, questionsIcon);
-  });
-});
-
-
-const handleClass = (paraOne, paraTow) => {
+}
+// Function to handle adding/removing a class to an element
+const handleClass = (element, targetElement) => {
   if (
-    paraOne.classList.contains("active") &&
-    paraTow.classList.contains("active")
+    element.classList.contains("active") &&
+    targetElement.classList.contains("active")
   ) {
-    paraOne.classList.remove("active");
-    paraTow.classList.remove("active");
+    element.classList.remove("active");
+    targetElement.classList.remove("active");
   }
 };
-// function text
+// Function to update text content of an element
 const handleText = (element, newText) => {
   element.textContent = "";
   let text = document.createTextNode(newText);
   element.appendChild(text);
 };
+// Category Dropdown
+handleDropdownClick(categoryDropdownDivs, categoryP, categoryIcon);
+//  Questions Dropdown
+handleDropdownClick(questionsDropdownDivs, questionsP, questionsIcon);
