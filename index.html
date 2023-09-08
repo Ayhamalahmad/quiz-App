@@ -14,11 +14,13 @@
     <title>Quiz App</title>
   </head>
   <body>
+    <!-- Start Header -->
     <div class="header">
       <div class="container">
         <p class="welcome-massege"></p>
       </div>
     </div>
+    <!-- Start Container -->
     <div class="container">
       <div class="animate-se">
         <div class="options">
@@ -38,34 +40,38 @@
         </div>
       </div>
 
-      <div class="op-to-select">
-        <p class="text">plase select ther options to start play</p>
-        <div class="dropdown-one-container">
-          <button class="dropdown-one-btn">
-            <p>select Category</p>
-            <i class="fas fa-sort-up dropdown-icon"></i>
-          </button>
-          <div class="dropdown-options-container">
-            <div class="ots ots-1 active">Code</div>
-            <div class="ots ots-2">DevOps</div>
-            <div class="ots ots-3">SQL</div>
-            <div class="ots ots-4">Docker</div>
-            <div class="ots ots-5">Linux</div>
-          </div>
+      <div class="options-selection">
+        <p class="instruction-text">Please select the options to start playing.</p>
+    
+        <div class="category-dropdown dropdown">
+            <button class="dropdown-button">
+                <p>Category</p>
+                <i class="fas fa-sort-up dropdown-icon"></i>
+            </button>
+            <div class="category-options dropdown-options">
+                <div class="option category-option option-active">Code</div>
+                <div class="option category-option">DevOps</div>
+                <div class="option category-option">SQL</div>
+                <div class="option category-option">Docker</div>
+                <div class="option category-option">Linux</div>
+            </div>
         </div>
+    
+        <div class="questions-dropdown dropdown">
+            <button class="dropdown-button">
+                <p>Number of Questions</p>
+                <i class="fas fa-sort-up  dropdown-icon"></i>
+            </button>
+            <div class="questions-options dropdown-options">
+                <div class="option questions-option option-1">10</div>
+                <div class="option questions-option option-2">20</div>
+                <div class="option questions-option option-3">30</div>
+                <div class="option questions-option option-all">all</div>
+            </div>
+        </div>
+    </div>
+    
 
-        <div class="dropdown-one-container">
-          <button class="dropdown-one-btn">
-            <p>select number of Questions</p>
-            <i class="fas fa-sort-up dropdown-icon"></i>
-          </button>
-          <div class="dropdown-op-tow-container">
-            <div class="otn otn-1">10</div>
-            <div class="otn otn-2">20</div>
-            <div class="otn otn-3">30</div>
-            <div class="otn otn-4">all</div>
-          </div>
-        </div>
       </div>
     </div>
     <script src="javascript/index.js"></script>

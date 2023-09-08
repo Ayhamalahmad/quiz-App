@@ -1,0 +1,196 @@
+@use "../utils/variables" as *;
+.options-selection{
+  .instruction-text{
+    text-align: start;
+    color: $lightGray;
+  }
+
+  // dropdown golbal
+  .dropdown{
+    button{
+      background-color: $darkerGray;
+      color: $darkBlueColor;
+      cursor: pointer;
+      width: fit-content;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: auto;
+      padding: 10px 20px;
+      border-radius: 10px;
+      gap: 20px;
+      p{
+        margin: 0;
+      }
+      i,svg{
+          transform: rotate(181deg);
+          margin-left: 10px;
+          transition: all 0.3s ease-in-out;
+          &.active {
+            transform: rotate(-1deg);
+          }
+      }
+    }
+    .dropdown-options{
+      display: none;
+      background-color: red;
+      border-radius: 22px;
+      color: white;
+      opacity: 0;
+      transition: all 0.3s ease-in-out;
+
+      &.active {
+        display: inherit;
+        opacity: 1;
+        transform: scale(0.9);
+        transition-duration: 0.3s;
+        animation: slide-in-top 0.3s both;
+      }
+      .option{
+        padding: 10px;
+                cursor: pointer;
+                &.inactive{
+                    display: none;
+                }
+                &.active{
+                    display: block;
+                }
+      }
+    }
+  }
+
+  .category-dropdown{
+    .dropdown-button{
+      p{}
+      svg,i{}
+      .category-options{
+        .category-option{
+          &.option-active{}
+        }
+      }
+
+      
+    }
+  }
+  // questions Num 
+  .questions-dropdown{
+    .dropdown-button{
+      p{}
+      i,svg{}
+    }
+    .questions-options{
+      .questions-option{
+        &.questions-option{}
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// $number-of-items: 5;
+// .options-selection {
+//   font-size: 30px;
+//   text-align: center;
+
+//   .instruction-text {
+//     text-align: start;
+//     color: $lightGray;
+//   }
+//   // one
+//   .dropdown-one-container {
+//     overflow: hidden;
+//     .dropdown-one-btn {
+//       background-color: $darkerGray;
+//       color: $darkBlueColor;
+//       cursor: pointer;
+//       width: fit-content;
+//       display: flex;
+//       align-items: center;
+//       justify-content: center;
+//       margin: auto;
+//       padding: 10px 20px;
+//       border-radius: 10px;
+//       gap: 20px;
+//       p {
+//         margin: 0;
+//       }
+//       .dropdown-icon {
+//         transform: rotate(181deg);
+//         margin-left: 10px;
+//         transition: all 0.3s ease-in-out;
+//         &.active {
+//           transform: rotate(-1deg);
+//         }
+//       }
+//     }
+//     .dropdown-options-container {
+//       display: none;
+//       background-color: red;
+//       border-radius: 22px;
+//       color: white;
+//       opacity: 0;
+//       transition: all 0.3s ease-in-out;
+
+//       &.active {
+//         display: inherit;
+//         opacity: 1;
+//         transform: scale(0.9);
+//         transition-duration: 0.3s;
+//         animation: slide-in-top 0.3s both;
+//       }
+
+//       div {
+//         padding: 10px;
+//         cursor: pointer;
+//         &.inactive{
+//             display: none;
+//         }
+//         &.active{
+//             display: block;
+//         }
+//       }
+//       @for $i from 1 through $number-of-items {
+//         .ots-#{$i} {
+//           padding-left: 10px;
+//         }
+//         .ots-#{$i}.active {
+//         }
+//       }
+//     }
+//   }
+
+//   .ots-two {
+//   }
+//   .ots-three {
+//   }
+// }
+// @keyframes slide-in-top {
+//   0% {
+//     opacity: 0;
+//     filter: blur(10px);
+//     transform: translateY(-273px);
+//   }
+
+//   100% {
+//     transform: translateY(0);
+//     opacity: 1;
+//   }
+// }

@@ -1,35 +1,38 @@
 // https://www.codu.co/articles/5-free-trivia-api-s-to-create-your-own-quiz-app-eoui-a7i
 // https://quizapi.io/
-// Select relevant elements
+// Select  elements
+// Welcome Massege
 let welcomeMassege = document.querySelector(".welcome-massege");
 //
 let dropdownOneBtn = document.querySelector(".dropdown-one-btn");
-let dropdownOneP = document.querySelector(".dropdown-one-btn p");
-let dropdownOtsOne = document.querySelector(".dropdown-options-container");
 let dropdownIcon = document.querySelector(".dropdown-icon");
-let dropdownOneDivs = document.querySelectorAll(
-  ".dropdown-options-container div"
-);
+// Initialize variables
+let i = 0; // Index to track the current character
+let milliseconds = 100; // Time delay between adding characters
+let welcomeMassegeText = "Welcome to the Quiz App!"; // Text to be animated
 
-// Set interval
-// Animate Text
-let i = 0;
-let milliseconds = 100;
-let welcomeMassegeText = "Welcome to the Quiz App!";
+// Function to start the text animation
 function startTextAnimation() {
   let textInterval = setInterval(() => {
+    // Append the current character to the welcome message
     welcomeMassege.textContent += welcomeMassegeText[i];
-    i++;
+    i++; // Move to the next character
+
+    // Check if we've reached the end of the text
     if (i === welcomeMassegeText.length) {
-      i = 0;
-      clearInterval(textInterval);
+      i = 0; // Reset the index to start from the beginning
+      clearInterval(textInterval); // Clear the animation interval
+
+      // After a delay, clear the text and start the animation again
       setTimeout(() => {
         welcomeMassege.textContent = "";
         startTextAnimation();
-      }, 2000);
+      }, 2000); // Delay in milliseconds before restarting the animation
     }
-  }, milliseconds);
+  }, milliseconds); // Set the interval for adding characters
 }
+
+// Call the function to start the text animation
 startTextAnimation();
 
 // // options
@@ -85,25 +88,67 @@ const toggleClass = (element, className) => {
 const addClass = (element, className) => {
   element.classList.add(className);
 };
-// Toggle the "active" class on Dropdown One and its icon when Dropdown One Button is clicked
-dropdownOneBtn.addEventListener("click", () => {
-  toggleClass(dropdownOtsOne, "active");
-  toggleClass(dropdownIcon, "active");
-});
-//
-dropdownOneDivs.forEach((div) => {
-  div.addEventListener("click", (e) => {
-    if (dropdownOneDivs) {
-      dropdownOneP.textContent = "";
-      let text = document.createTextNode(e.target.textContent);
-      dropdownOneP.appendChild(text);
-      if (
-        dropdownOtsOne.classList.contains("active") &&
-        dropdownIcon.classList.contains("active")
-      ) {
-        dropdownOtsOne.classList.remove("active");
-        dropdownIcon.classList.remove("active");
-      }
-    }
+// Select all the dropdown buttons, options, and icons
+let dropdownButtons = document.querySelectorAll(".dropdown-button");
+let dropdownOptions = document.querySelectorAll(".dropdown-options");
+let dropdownIcons = document.querySelectorAll(".dropdown-icon");
+
+// Add a click event listener to each dropdown button
+dropdownButtons.forEach((button, index) => {
+  button.addEventListener("click", () => {
+    // Toggle the 'active' class for the corresponding dropdown options
+    toggleClass(dropdownOptions[index], "active");
+    // Toggle the 'active' class for the corresponding dropdown icons
+    toggleClass(dropdownIcons[index], "active");
   });
 });
+//
+let dropdownOneDivs = document.querySelectorAll(".dropdown-options .option");
+let dropdownOneP = document.querySelectorAll(".dropdown-button p");
+
+//category-options
+let categoryDropdown = document.querySelector(".category-dropdown");
+let categoryDropdownDivs = document.querySelectorAll(".category-dropdown div");
+let categoryP = document.querySelector(".category-dropdown .dropdown-button p");
+let categoryIcon = document.querySelector(
+  ".category-dropdown .dropdown-button .dropdown-icon"
+);
+let categoryOption = document.querySelector(
+  ".category-dropdown  .category-options"
+);
+
+categoryDropdownDivs.forEach((div, index) => {
+  div.addEventListener("click", (e) => {
+    handleText(categoryP, e.target.textContent);
+    handleClass(categoryOption, categoryIcon);
+  });
+});
+// questions-dropdown
+let questionsDropdownDivs =document.querySelectorAll('.questions-dropdown div');
+let questionsP=document.querySelector('.questions-dropdown .dropdown-button p');
+let questionsOption=document.querySelector('.questions-dropdown .questions-options');
+let questionsIcon=document.querySelector('.questions-dropdown .dropdown-icon');
+
+questionsDropdownDivs.forEach((div, index) => {
+  div.addEventListener("click", (e) => {
+    handleText(questionsP, e.target.textContent);
+    handleClass(questionsOption, questionsIcon);
+  });
+});
+
+
+const handleClass = (paraOne, paraTow) => {
+  if (
+    paraOne.classList.contains("active") &&
+    paraTow.classList.contains("active")
+  ) {
+    paraOne.classList.remove("active");
+    paraTow.classList.remove("active");
+  }
+};
+// function text
+const handleText = (element, newText) => {
+  element.textContent = "";
+  let text = document.createTextNode(newText);
+  element.appendChild(text);
+};
