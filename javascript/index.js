@@ -26,6 +26,16 @@ let categoryIcon = document.querySelector(
 let categoryOption = document.querySelector(
   ".category-dropdown  .category-options"
 );
+// difficulties Dropdown
+let difficultiesDropdownDivs = document.querySelectorAll(
+  ".difficulties-dropdown div"
+);
+let difficultiesP = document.querySelector(
+  ".difficulties-dropdown .dropdown-button p"
+);
+let difficultiesIcon = document.querySelector(
+  ".difficulties-dropdown .dropdown-button .dropdown-icon"
+);
 // Select all the dropdown buttons, options, and icons
 let dropdownButtons = document.querySelectorAll(".dropdown-button");
 let dropdownOptions = document.querySelectorAll(".dropdown-options");
@@ -157,3 +167,5 @@ const handleText = (element, newText) => {
 handleDropdownClick(categoryDropdownDivs, categoryP, categoryIcon);
 //  Questions Dropdown
 handleDropdownClick(questionsDropdownDivs, questionsP, questionsIcon);
+//  difficulties Dropdown
+handleDropdownClick(difficultiesDropdownDivs, difficultiesP, difficultiesIcon);
