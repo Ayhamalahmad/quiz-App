@@ -39,7 +39,7 @@
           <div class="di di-3">Hard</div>
         </div>
       </div>
-
+      <!-- options selection -->
       <div class="options-selection">
         <p class="instruction-text">Please select the options to start playing.</p>
     
@@ -59,17 +59,17 @@
         </div>
     
 
-        
+
         <div class="questions-dropdown dropdown">
             <button class="dropdown-button">
                 <p>Number of Questions</p>
                 <i class="fas fa-sort-up  dropdown-icon"></i>
             </button>
             <div class="questions-options dropdown-options">
-                <div class="option questions-option option-1">10</div>
-                <div class="option questions-option option-2">20</div>
-                <div class="option questions-option option-3">30</div>
-                <div class="option questions-option option-all">all</div>
+                <div data-numberq="10" class="option questions-option option-1">10</div>
+                <div data-numberq="20" class="option questions-option option-2">20</div>
+                <div data-numberq="30" class="option questions-option option-3">30</div>
+                <div  class="option questions-option option-all">all</div>
             </div>
         </div>
 
@@ -80,15 +80,16 @@
               <i class="fas fa-sort-up dropdown-icon"></i>
           </button>
           <div class="difficulties-options dropdown-options">
-              <div class="option difficulties-option easy">Easy</div>
-              <div class="option difficulties-option medium">Medium</div>
-              <div class="option difficulties-option hard">Hard</div>
-              <div class="option difficulties-option any">Any</div>
+              <div data-difficulty="easy"  class="option difficulties-option easy">Easy</div>
+              <div data-difficulty="medium"  class="option difficulties-option medium">Medium</div>
+              <div data-difficulty="hard"  class="option difficulties-option hard">Hard</div>
+              <div  class="option difficulties-option any">Any</div>
           </div>
     </div>
     
 
       </div>
+
     </div>
     <script src="javascript/index.js"></script>
     <script src="javascript/api.js"></script>
