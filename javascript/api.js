@@ -7,10 +7,14 @@ let buttonsContainer = document.querySelectorAll(".buttons button");
 let getquestionAnswerContainer = document.querySelectorAll(
   ".question-answer-container"
 );
+let questionsDivs;
+
 console.log(getquestionAnswerContainer);
 
 // Vars
+let clickedChoice = null;
 let currentIndex = 0;
+let correctAnswer;
 let numberOfQ = 10;
 let selectedCategoryId;
 let difficultyLevel;
@@ -24,9 +28,6 @@ let promises = [
 Promise.all(promises)
   .then((results) => {
     let categoriesData = results[0];
-    let apiUrlData = results[1];
-
-    // let apiUrlAllData = results[2];
     // Loop through each element in the trivia_categories
     categoriesData.trivia_categories.forEach((element) => {
       // Create a new <div> element
@@ -72,11 +73,11 @@ dropdownS.forEach((dropdown) => {
     fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => {
-
         console.log("Data:", data);
-        
-        data.results.forEach((result) => {
 
+        data.results.forEach((result) => {
+          correctAnswer = result.correct_answer;
+          console.log(correctAnswer);
           // console.log(result.question);
           questionNumber.textContent = numberOfQ;
           // Create a paragraph for the question text
@@ -100,6 +101,22 @@ dropdownS.forEach((dropdown) => {
             listItem.classList.add("answer-choice");
             listItem.textContent = choiceText;
             answerList.appendChild(listItem);
+            //
+            let answerChoices = document.querySelectorAll(
+              ".question-answer-container.active  .answer-choice"
+            );
+            answerChoices.forEach((choice) => {
+              choice.addEventListener("click", (e) => {
+                console.log(e.target);
+                if (clickedChoice) {
+                  clickedChoice.classList.remove("clicked");
+                }
+                choice.classList.remove("clicked");
+                e.target.classList.add("clicked");
+                clickedChoice = choice;
+              });
+            });
+            //
           });
 
           // Add the created elements to the DOM
@@ -112,34 +129,49 @@ dropdownS.forEach((dropdown) => {
           questionAnswerContainer.appendChild(answerHeader);
           questionAnswerContainer.appendChild(answerList);
           questionContainer.appendChild(questionAnswerContainer);
-       
+          //select question answer container
+          questionsDivs = document.querySelectorAll(
+            ".question-container .question-answer-container"
+          );
+          // Update the active question
+          updateActiveQuestion();
         });
       })
+
       .catch((error) => {
         console.error("Fetch error", error);
       });
   });
 });
+// Add event listeners to the buttons for navigation
+buttonsContainer.forEach((button) => {
+  button.addEventListener("click", (e) => {
+    // Check if "next" button is clicked and currentIndex is within bounds
+    if (e.target.classList.contains("next") && currentIndex < numberOfQ - 1) {
+      currentIndex++;
+    }
+    // Check if "previous" button is clicked and currentIndex is within bounds
+    else if (e.target.classList.contains("previous") && currentIndex > 0) {
+      currentIndex--;
+    }
+    // Ensure currentIndex is not less than 0 &&  currentIndex is not greater than the number of questions
+    currentIndex = Math.min(
+      Math.max(currentIndex, 0),
+      questionsDivs.length - 1
+    );
+    // Update the active question
+    updateActiveQuestion();
+  });
+});
 
-// //
-// buttonsContainer.forEach((button) => {
-//   button.addEventListener("click", (e) => {
-//     console.log(e.target);
-//     if (e.target.classList.contains("next")) {
-//       currentIndex++;
-//     } else if (e.target.classList.contains("previous")) {
-//       currentIndex--;
-//     }
-//     console.log(currentIndex);
-//   });
-// });
-
-// getquestionAnswerContainer.forEach((e, index) => {
-//   e.classList.remove("active");
-//   if (index === currentIndex) {
-//     e.classList.add("active");
-//   } else {
-//     e.classList.remove("active");
-//   }
-// });
-console.log(getquestionAnswerContainer);
+// Function to update the active question based on currentIndex
+function updateActiveQuestion() {
+  questionsDivs.forEach((div, index) => {
+    // Remove "active" class from all question containers
+    div.classList.remove("active");
+    if (index === currentIndex) {
+      // Add "active" class to the currently selected question container
+      div.classList.add("active");
+    }
+  });
+}
