@@ -257,5 +257,24 @@ a {
 .options-selection .dropdown .dropdown-options .option.active {
   display: block;
 }
+.section-container {
+  background-color: rebeccapurple;
+  border-radius: 10px;
+  color: white;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.section-container .question-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.section-container .question-container .question-answer-container {
+  display: none;
+}
+.section-container .question-container .question-answer-container.active {
+  display: block;
+}
 /*Start Footer*/
 /*End Footer*//*# sourceMappingURL=main.css.map */

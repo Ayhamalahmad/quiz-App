@@ -1,0 +1,25 @@
+.section-container{
+    background-color: rebeccapurple;
+    border-radius: 10px;
+    color: white;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    .question-container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    .question-answer-container{
+        display: none;
+        &.active{
+            display: block;
+        }
+    }
+        .answer-header{}
+    
+    
+        .answer-choices{
+            .answer-choice{}
+        }
+    }
+}

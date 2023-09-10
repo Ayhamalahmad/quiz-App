@@ -15,14 +15,14 @@
   </head>
   <body>
     <!-- Start Header -->
-    <div class="header">
+    <div style="display: none;" class="header">
       <div class="container">
         <p class="welcome-massege"></p>
       </div>
     </div>
     <!-- Start Container -->
     <div class="container">
-      <div class="animate-se">
+      <div style="display: none;" class="animate-se">
         <div class="options">
           categorys
           <div class="op op-1 active">Code</div>
@@ -69,7 +69,7 @@
                 <div data-numberq="10" class="option questions-option option-1">10</div>
                 <div data-numberq="20" class="option questions-option option-2">20</div>
                 <div data-numberq="30" class="option questions-option option-3">30</div>
-                <div data-numberq="50" class="option questions-option option-all">all</div>
+                <!-- <div data-numberq="50" class="option questions-option option-all">all</div> -->
             </div>
         </div>
 
@@ -90,18 +90,31 @@
 
       </div>
       <!-- Questions -->
-      <div class="question-container">
-        <h2 class="question">Question:</h2>
-        <p class="question-text">This is where the question text will appear.</p>
+      <div class="section-container">
 
-        <h3 class="answer-header">Choose an answer:</h3>
-        <ul class="answer-choices">
-            <li class="answer-choice">Choice A</li>
-            <li class="answer-choice">Choice B</li>
-            <li class="answer-choice">Choice C</li>
-            <li class="answer-choice">Choice D</li>
-        </ul>
-    </div>
+        <div class="question-container">
+
+          <h2 class="question">Questions:<span class="num"></span></h2>
+
+          <div class="question-answer-container">
+            <p class="question-text">This is where the question text will appear.</p>
+  
+            <h3 class="answer-header">Choose an answer:</h3>
+            <ul class="answer-choices">
+                <li class="answer-choice">Choice A</li>
+                <li class="answer-choice">Choice B</li>
+                <li class="answer-choice">Choice C</li>
+                <li class="answer-choice">Choice D</li>
+            </ul>
+           
+          </div>
+          <div class="buttons">
+            <button class="next">next</button>
+            <button class="previous">previous</button>
+          </div>
+      </div>
+      </div>
+ 
     </div>
     <script src="javascript/index.js"></script>
     <script src="javascript/api.js"></script>
