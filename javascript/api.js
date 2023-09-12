@@ -98,23 +98,26 @@ dropdownS.forEach((dropdown) => {
           choices.forEach((choiceText, index) => {
             const listItem = document.createElement("li");
             listItem.classList.add("answer-choice");
-            listItem.textContent = choiceText;
+            // listItem.textContent = choiceText;
             answerList.appendChild(listItem);
-            // const input = document.createElement("input");
-            // input.type = "radio";
-            // input.classList.add("aaa");
-            // input.dataset.answer = choiceText;
+
+            const input = document.createElement("input");
+            input.type = "radio";
+            input.classList.add("aaa");
+            input.dataset.answer = choiceText;
             // input.name = `question-${currentId}`;
-            // input.id = `choice-${currentId}`; // Use a unique ID for each choice
-            // const label = document.createElement("label");
-            // label.setAttribute("for", `choice-${currentId}`); // Set the 'for' attribute to match the 'id' of the associated input
-            // label.textContent = choiceText;
-            // const answerLabelContainer = document.createElement("div");
-            // answerLabelContainer.appendChild(input);
-            // answerLabelContainer.appendChild(label);
-            // listItem.appendChild(answerLabelContainer);
-            //
+            input.id = `choice-${currentId}`; // Use a unique ID for each choice
+            const label = document.createElement("label");
+            label.setAttribute("for", `choice-${currentId}`); // Set the 'for' attribute to match the 'id' of the associated input
+            label.textContent = choiceText;
+            const answerLabelContainer = document.createElement("div");
+            answerLabelContainer.appendChild(input);
+            answerLabelContainer.appendChild(label);
+            listItem.appendChild(answerLabelContainer);
+            //Increment current ID
+            currentId++;
           });
+
           // Add the created elements to the DOM
           const questionContainer = document.querySelector(
             ".question-container"
@@ -132,6 +135,9 @@ dropdownS.forEach((dropdown) => {
           // Update the active question
           updateActiveQuestion();
         });
+        //set input element names
+        handleInputName();
+        //
       })
 
       .catch((error) => {
@@ -150,6 +156,8 @@ buttonsContainer.forEach((button) => {
     else if (e.target.classList.contains("previous") && currentIndex > 0) {
       currentIndex--;
     }
+    // set input element names
+    handleInputName();
     // Ensure currentIndex is not less than 0 &&  currentIndex is not greater than the number of questions
     currentIndex = Math.min(
       Math.max(currentIndex, 0),
@@ -169,6 +177,18 @@ function updateActiveQuestion() {
       // Add "active" class to the currently selected question container
       div.classList.add("active");
     }
+  });
+}
+// function  to manage input element names.
+function handleInputName() {
+  let answerchoices = document.querySelectorAll(".answer-choices");
+  let inputs = answerchoices[currentIndex].querySelectorAll(
+    ".answer-choice input"
+  );
+  // Loop through each input element found.
+  inputs.forEach((input) => {
+     // Set the 'name' attribute of each input element to "question-[currentIndex]" for identification.
+    input.name = `question-${currentIndex}`;
   });
 }
 if (currentIndex == numberOfQ) {
