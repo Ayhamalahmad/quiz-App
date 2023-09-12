@@ -12,8 +12,9 @@ let questionsDivs;
 console.log(getquestionAnswerContainer);
 
 // Vars
-let clickedChoice = null;
+let clickedChoice = [];
 let currentIndex = 0;
+let currentId = 0;
 let correctAnswer;
 let numberOfQ = 10;
 let selectedCategoryId;
@@ -77,8 +78,6 @@ dropdownS.forEach((dropdown) => {
 
         data.results.forEach((result) => {
           correctAnswer = result.correct_answer;
-          console.log(correctAnswer);
-          // console.log(result.question);
           questionNumber.textContent = numberOfQ;
           // Create a paragraph for the question text
           const questionText = document.createElement("p");
@@ -96,29 +95,26 @@ dropdownS.forEach((dropdown) => {
 
           // Create list items for answer choices and add them to the list
           const choices = [result.correct_answer, ...result.incorrect_answers];
-          choices.forEach((choiceText) => {
+          choices.forEach((choiceText, index) => {
             const listItem = document.createElement("li");
             listItem.classList.add("answer-choice");
             listItem.textContent = choiceText;
             answerList.appendChild(listItem);
-            //
-            let answerChoices = document.querySelectorAll(
-              ".question-answer-container.active  .answer-choice"
-            );
-            answerChoices.forEach((choice) => {
-              choice.addEventListener("click", (e) => {
-                console.log(e.target);
-                if (clickedChoice) {
-                  clickedChoice.classList.remove("clicked");
-                }
-                choice.classList.remove("clicked");
-                e.target.classList.add("clicked");
-                clickedChoice = choice;
-              });
-            });
+            // const input = document.createElement("input");
+            // input.type = "radio";
+            // input.classList.add("aaa");
+            // input.dataset.answer = choiceText;
+            // input.name = `question-${currentId}`;
+            // input.id = `choice-${currentId}`; // Use a unique ID for each choice
+            // const label = document.createElement("label");
+            // label.setAttribute("for", `choice-${currentId}`); // Set the 'for' attribute to match the 'id' of the associated input
+            // label.textContent = choiceText;
+            // const answerLabelContainer = document.createElement("div");
+            // answerLabelContainer.appendChild(input);
+            // answerLabelContainer.appendChild(label);
+            // listItem.appendChild(answerLabelContainer);
             //
           });
-
           // Add the created elements to the DOM
           const questionContainer = document.querySelector(
             ".question-container"
@@ -173,5 +169,19 @@ function updateActiveQuestion() {
       // Add "active" class to the currently selected question container
       div.classList.add("active");
     }
+  });
+}
+if (currentIndex == numberOfQ) {
+  // Select all radio buttons with the same 'name' attribute (e.g., "question")
+  let selectedRadioButtons = document.querySelectorAll(
+    'input[type="radio"][name="question"]'
+  );
+
+  selectedRadioButtons.forEach((element) => {
+    element.addEventListener("click", (e) => {
+      if (element.checked) {
+        console.log(e.target);
+      }
+    });
   });
 }
