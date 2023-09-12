@@ -5,6 +5,7 @@ console.log(resultContaoner);
 let dropdownS = document.querySelectorAll(".dropdown div");
 // Questions
 let questionNumber = document.querySelector(".question-container .num");
+let currentquestionNumber = document.querySelector(".question-container .current-question");
 let buttonsContainer = document.querySelectorAll(".buttons button");
 let getquestionAnswerContainer = document.querySelectorAll(
   ".question-answer-container"
@@ -174,6 +175,8 @@ buttonsContainer.forEach((button) => {
       Math.max(currentIndex, 0),
       questionsDivs.length - 1
     );
+    // Display And update current question Number
+    currentquestionNumber.textContent = currentIndex + 1;
     // Update the active question
     updateActiveQuestion();
     //

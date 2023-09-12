@@ -203,11 +203,29 @@ a {
   display: inherit;
 }
 
+.options-selection {
+  display: flex;
+  flex-direction: column;
+}
 .options-selection .instruction-text {
   text-align: start;
   color: #ddd;
 }
-.options-selection .dropdown button {
+.options-selection .dropdowns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  flex-wrap: wrap;
+  gap: 2rem;
+  position: relative;
+}
+@media (max-width:767px) {
+  .options-selection .dropdowns {
+    justify-content: start;
+  }
+}
+.options-selection .dropdowns .dropdown button {
   background-color: #d1d1d1;
   color: #2f4858;
   cursor: pointer;
@@ -221,46 +239,64 @@ a {
   border-radius: 10px;
   gap: 20px;
 }
-.options-selection .dropdown button p {
+.options-selection .dropdowns .dropdown button p {
   margin: 0;
 }
-.options-selection .dropdown button i, .options-selection .dropdown button svg {
+.options-selection .dropdowns .dropdown button i,
+.options-selection .dropdowns .dropdown button svg {
   transform: rotate(181deg);
   margin-left: 10px;
   transition: all 0.3s ease-in-out;
 }
-.options-selection .dropdown button i.active, .options-selection .dropdown button svg.active {
+.options-selection .dropdowns .dropdown button i.active,
+.options-selection .dropdowns .dropdown button svg.active {
   transform: rotate(-1deg);
 }
-.options-selection .dropdown .dropdown-options {
+.options-selection .dropdowns .dropdown .dropdown-options {
   display: none;
-  background-color: red;
+  background-color: #d1d1d1;
   border-radius: 22px;
-  color: white;
+  color: #2f4858;
   opacity: 0;
   transition: all 0.3s ease-in-out;
+  height: 200px;
+  overflow: hidden;
+  overflow-y: auto;
+  padding: 20px;
+  margin-top: 10px;
+  position: absolute;
+  z-index: 99;
 }
-.options-selection .dropdown .dropdown-options.active {
+.options-selection .dropdowns .dropdown .dropdown-options::-webkit-scrollbar {
+  display: none;
+}
+.options-selection .dropdowns .dropdown .dropdown-options.active {
   display: inherit;
   opacity: 1;
   transform: scale(0.9);
   transition-duration: 0.3s;
   animation: slide-in-top 0.3s both;
 }
-.options-selection .dropdown .dropdown-options .option {
-  padding: 10px;
+.options-selection .dropdowns .dropdown .dropdown-options .option {
+  padding: 10px 15px;
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  border-radius: 10px;
 }
-.options-selection .dropdown .dropdown-options .option.inactive {
+.options-selection .dropdowns .dropdown .dropdown-options .option:hover {
+  background-color: #2f4858;
+  color: #d1d1d1;
+}
+.options-selection .dropdowns .dropdown .dropdown-options .option.inactive {
   display: none;
 }
-.options-selection .dropdown .dropdown-options .option.active {
+.options-selection .dropdowns .dropdown .dropdown-options .option.active {
   display: block;
 }
 .section-container {
-  background-color: rebeccapurple;
+  background-color: #d1d1d1;
   border-radius: 10px;
-  color: white;
+  color: #2f4858;
   margin-bottom: 20px;
   margin-top: 20px;
 }

@@ -44,68 +44,78 @@
         <p class="instruction-text">
           Please select the options to start playing.
         </p>
-
-        <div class="category-dropdown dropdown">
-          <button class="dropdown-button">
-            <p>Category</p>
-            <i class="fas fa-sort-up dropdown-icon"></i>
-          </button>
-          <div class="category-options dropdown-options">
-            <div class="option category-option category-option-all">All</div>
-            <!-- <div class="option category-option option-active">Code</div>
-                <div class="option category-option">DevOps</div>
-                <div class="option category-option">SQL</div>
-                <div class="option category-option">Docker</div>
-                <div class="option category-option">Linux</div> -->
+        <div class="dropdowns">
+          <div class="category-dropdown dropdown">
+            <button class="dropdown-button">
+              <p>Category</p>
+              <i class="fas fa-sort-up dropdown-icon"></i>
+            </button>
+            <div class="category-options dropdown-options">
+              <div class="option category-option category-option-all">All</div>
+              <!-- <div class="option category-option option-active">Code</div>
+                  <div class="option category-option">DevOps</div>
+                  <div class="option category-option">SQL</div>
+                  <div class="option category-option">Docker</div>
+                  <div class="option category-option">Linux</div> -->
+            </div>
           </div>
-        </div>
 
-        <div class="questions-dropdown dropdown">
-          <button class="dropdown-button">
-            <p>Number of Questions</p>
-            <i class="fas fa-sort-up dropdown-icon"></i>
-          </button>
-          <div class="questions-options dropdown-options">
-            <div data-numberq="10" class="option questions-option option-1">
-              10
+          <div class="questions-dropdown dropdown">
+            <button class="dropdown-button">
+              <p>Number of Questions</p>
+              <i class="fas fa-sort-up dropdown-icon"></i>
+            </button>
+            <div class="questions-options dropdown-options">
+              <div data-numberq="10" class="option questions-option option-1">
+                10
+              </div>
+              <div data-numberq="20" class="option questions-option option-2">
+                20
+              </div>
+              <div data-numberq="30" class="option questions-option option-3">
+                30
+              </div>
+              <!-- <div data-numberq="50" class="option questions-option option-all">all</div> -->
             </div>
-            <div data-numberq="20" class="option questions-option option-2">
-              20
-            </div>
-            <div data-numberq="30" class="option questions-option option-3">
-              30
-            </div>
-            <!-- <div data-numberq="50" class="option questions-option option-all">all</div> -->
           </div>
-        </div>
 
-        <div class="difficulties-dropdown dropdown">
-          <button class="dropdown-button">
-            <p>Difficulty Level</p>
-            <i class="fas fa-sort-up dropdown-icon"></i>
-          </button>
-          <div class="difficulties-options dropdown-options">
-            <div data-difficulty="easy" class="option difficulties-option easy">
-              Easy
+          <div class="difficulties-dropdown dropdown">
+            <button class="dropdown-button">
+              <p>Difficulty Level</p>
+              <i class="fas fa-sort-up dropdown-icon"></i>
+            </button>
+            <div class="difficulties-options dropdown-options">
+              <div
+                data-difficulty="easy"
+                class="option difficulties-option easy"
+              >
+                Easy
+              </div>
+              <div
+                data-difficulty="medium"
+                class="option difficulties-option medium"
+              >
+                Medium
+              </div>
+              <div
+                data-difficulty="hard"
+                class="option difficulties-option hard"
+              >
+                Hard
+              </div>
+              <div class="option difficulties-option any">Any</div>
             </div>
-            <div
-              data-difficulty="medium"
-              class="option difficulties-option medium"
-            >
-              Medium
-            </div>
-            <div data-difficulty="hard" class="option difficulties-option hard">
-              Hard
-            </div>
-            <div class="option difficulties-option any">Any</div>
           </div>
         </div>
       </div>
       <!-- Questions -->
       <div class="section-container">
         <div class="question-container">
-          <h2 class="question">Questions:<span class="num"></span></h2>
-          
+          <div>
+            <div class="current-question"></div>
+            <h2 class="question">Questions:<span class="num"> </span></h2>
+          </div>
+
           <!-- <div class="question-answer-container">
             <p class="question-text">This is where the question text will appear.</p>
 
