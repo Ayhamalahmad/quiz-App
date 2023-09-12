@@ -1,5 +1,7 @@
 // https://opentdb.com/api_config.php
 let categoryOptionsContainer = document.querySelector(".category-options");
+let resultContaoner = document.querySelector(".result");
+console.log(resultContaoner);
 let dropdownS = document.querySelectorAll(".dropdown div");
 // Questions
 let questionNumber = document.querySelector(".question-container .num");
@@ -13,9 +15,10 @@ console.log(getquestionAnswerContainer);
 
 // Vars
 let clickedChoice = [];
+let selectedRadioInputs = [];
 let currentIndex = 0;
 let currentId = 0;
-let correctAnswer;
+let correctAnswer = [];
 let numberOfQ = 10;
 let selectedCategoryId;
 let difficultyLevel;
@@ -75,9 +78,15 @@ dropdownS.forEach((dropdown) => {
       .then((response) => response.json())
       .then((data) => {
         console.log("Data:", data);
-
+        if (selectedRadioInputs) {
+          data.results.forEach((s, index) => {
+            if (s.correct_answer === index) {
+              console.log(true);
+            }
+          });
+        }
         data.results.forEach((result) => {
-          correctAnswer = result.correct_answer;
+          correctAnswer.push(result.correct_answer);
           questionNumber.textContent = numberOfQ;
           // Create a paragraph for the question text
           const questionText = document.createElement("p");
@@ -158,6 +167,8 @@ buttonsContainer.forEach((button) => {
     }
     // set input element names
     handleInputName();
+
+    //
     // Ensure currentIndex is not less than 0 &&  currentIndex is not greater than the number of questions
     currentIndex = Math.min(
       Math.max(currentIndex, 0),
@@ -165,6 +176,10 @@ buttonsContainer.forEach((button) => {
     );
     // Update the active question
     updateActiveQuestion();
+    //
+    if (currentIndex === numberOfQ - 1) {
+      chekAnswer();
+    }
   });
 });
 
@@ -187,21 +202,49 @@ function handleInputName() {
   );
   // Loop through each input element found.
   inputs.forEach((input) => {
-     // Set the 'name' attribute of each input element to "question-[currentIndex]" for identification.
+    // Set the 'name' attribute of each input element to "question-[currentIndex]" for identification.
     input.name = `question-${currentIndex}`;
   });
 }
-if (currentIndex == numberOfQ) {
-  // Select all radio buttons with the same 'name' attribute (e.g., "question")
-  let selectedRadioButtons = document.querySelectorAll(
-    'input[type="radio"][name="question"]'
-  );
+// Function to check and display answers
+function chekAnswer() {
+  // Select all radio inputs of type 'radio'
+  let radioInputs = document.querySelectorAll('input[type="radio"]');
+  // Iterate over each selected radio input
+  radioInputs.forEach((radioInput, index) => {
+    
+    // Check if the radio input is checked
+    if (radioInput.checked) {
 
-  selectedRadioButtons.forEach((element) => {
-    element.addEventListener("click", (e) => {
-      if (element.checked) {
-        console.log(e.target);
+      // Check if the selected radio input is not already in the selectedRadioInputs array
+      if (!selectedRadioInputs.includes(radioInput)) {
+        // Add the selected radio input to the selectedRadioInputs array
+        selectedRadioInputs.push(radioInput);
+
+        // Create a container div to display the selected input and its status
+        let contanierOfSelected = document.createElement("div");
+        // Create a div to display the selected input's value (answer)
+        let selectedInput = document.createElement("div");
+        selectedInput.textContent = radioInput.dataset.answer;
+
+        // Create a div to display whether the answer is correct or incorrect
+        let stute = document.createElement("div");
+        if (radioInput.dataset.answer[index] === correctAnswer[index]) {
+          stute.textContent = "correct";
+        } else {
+          stute.textContent = "incorrect";
+        }
+
+        // Create a div to display the number of correct answers out of total questions
+        let correctQuestions = document.createElement("div");
+        correctQuestions.textContent = `${selectedRadioInputs.length} from ${numberOfQ}`;
+
+        // Append the created elements to the result container (resultContaoner assumed to be defined elsewhere)
+        contanierOfSelected.appendChild(selectedInput);
+        contanierOfSelected.appendChild(stute);
+        resultContaoner.appendChild(correctQuestions);
+        resultContaoner.appendChild(contanierOfSelected);
       }
-    });
+    }
   });
 }
