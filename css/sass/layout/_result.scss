@@ -1,0 +1,35 @@
+@use "../utils/variables" as *;
+.result {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: $darkGray;
+  color: white;
+  gap: 20px;
+  margin: 20px 0;
+
+  h1 {
+  }
+  .contanier-Of-selected {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    // background-color: rgb(211, 179, 0);
+    .selected {
+      // background-color: green;
+    }
+    .correct,.incorrect{
+      padding: 10px;
+      border-radius: 5px;
+  
+    }
+    .correct {
+      background-color: #007C4D;
+    }
+    .incorrect {
+      background-color: #AB0000;
+    }
+  }
+}

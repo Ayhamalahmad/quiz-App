@@ -1,26 +1,148 @@
 @use "../utils/variables" as *;
-.section-container{
-    background-color: $darkerGray;
-    border-radius: 10px;
-    color: $darkBlueColor;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    .question-container{
+.section-container {
+  background-color: $darkerGray;
+  border-radius: 10px;
+  color: $darkBlueColor;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  //
+  background: rgba(209, 209, 209, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  .question-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    .title-conatiner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 20px;
+      font-weight: bold;
+      .current-question {
+      }
+      .question {
+        display: flex;
+        gap: 20px;
+        .num {
+        }
+      }
+    }
+    .question-answer-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      // display: none;
+      &.active {
+        // display: flex;
+      }
+    }
+    .answer-header {
+    }
+
+    .answer-choices {
+      width: 100%;
+      gap: 20px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* يعرض عنصرين في كل صف */
+      align-items: center;
+      // gap: 10px; /
+      .answer-choice {
+        width: 100%;
         display: flex;
         align-items: center;
-        justify-content: center;
-        flex-direction: column;
-    .question-answer-container{
-        display: none;
-        &.active{
-            display: block;
+        gap: 10px;
+        input {
+          -webkit-appearance: none;
+          appearance: none;
+          // &:hover {
+          //   background-color: $darkGray;
+          //   color: $light;
+          // }
+          &:checked + label::after,
+          :not(:checked):hover + label::after {
+            content: "";
+            background-color: $darkBlueColor;
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            left: 11px;
+            top: 14px;
+          }
+          &:not(:checked):hover:before {
+            border: 1px solid $light;
+          }
         }
-    }
-        .answer-header{}
-    
-    
-        .answer-choices{
-            .answer-choice{}
+        label {
+          padding: 10px 40px;
+          border-radius: 10px;
+          cursor: pointer;
+          transition: $primaryTrantion;
+          position: relative;
+          &:hover {
+            background-color: $darkGray;
+            color: $light;
+            &::after {
+              transition: $primaryTrantion;
+              content: "";
+              background-color: $light;
+              width: 10px;
+              height: 10px;
+              position: absolute;
+              left: 11px;
+              top: 14px;
+            }
+            &:not(:checked):hover + &::after {
+              opacity: 0.2;
+            }
+            :checked + label {
+              color: $darkBlueColor;
+            }
+            // &:not(:checked)::before{
+            //   border: 1px solid $light;
+            // }
+          }
+          &::before {
+            transition: $primaryTrantion;
+            content: "";
+            width: 16px;
+            height: 16px;
+            border: 1px solid $darkBlueColor;
+            position: absolute;
+            left: 7px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+          }
         }
+      }
     }
+    .buttons {
+      order: 1;
+      padding: 20px 0;
+      button {
+        background-color: $darkBlueColor;
+        color: $light;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: $primaryTrantion;
+        &:hover {
+          background-color: $darkGray;
+        }
+      }
+      .next {
+      }
+      .previous {
+      }
+    }
+  }
 }
