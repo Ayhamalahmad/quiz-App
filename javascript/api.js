@@ -3,11 +3,13 @@ let categoryOptionsContainer = document.querySelector(".category-options");
 let categoryOpAnText = document.querySelector(".op");
 let resultContaoner = document.querySelector(".result");
 let dropdownS = document.querySelectorAll(".dropdown div");
+let QContainer = document.querySelector(".section-container");
 // Questions
 let questionNumber = document.querySelector(".question-container .num");
 let currentquestionNumber = document.querySelector(
   ".question-container .current-question"
 );
+let questionsTextOfNum=document.querySelector('.current-question .question')
 let buttonsContainer = document.querySelectorAll(".buttons button");
 let getquestionAnswerContainer = document.querySelectorAll(
   ".question-answer-container"
@@ -88,6 +90,8 @@ dropdownS.forEach((dropdown) => {
 });
 // Function to fetch questions and initialize the program
 start.addEventListener("click", () => {
+  // Show Questions
+  QContainer.classList.add("show");
   console.log(apiUrl, numberOfQ, difficultyLevel, selectedCategoryId);
   fetch(apiUrl)
     .then((response) => response.json())
@@ -110,6 +114,7 @@ start.addEventListener("click", () => {
         // Create an unordered list for answer choices
         const answerList = document.createElement("ul");
         answerList.classList.add("answer-choices");
+        answerList.id="answer-choices"
 
         // Create list items for answer choices and add them to the list
         const choices = [result.correct_answer, ...result.incorrect_answers];
@@ -271,8 +276,11 @@ function checkAnswer() {
 
 // Function to reset the application
 function resetApplication() {
+// Hidde  Questions
+  QContainer.classList.remove("show");
   // Reset variables to their initial values
   selectedCategoryId = null;
+  currentIndex=0;
   // numberOfQ = 10;
   difficultyLevel = null;
   apiUrl = `https://opentdb.com/api.php?amount=${numberOfQ}`;
@@ -306,4 +314,9 @@ function resetApplication() {
   numCorrect.forEach((element) => {
     element.remove();
   });
+  questionsDivs.forEach((element) => {
+    element.remove();
+  });
+    // Clear the current question number display
+  currentquestionNumber.textContent = "";
 }

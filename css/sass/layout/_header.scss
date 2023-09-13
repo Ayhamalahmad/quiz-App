@@ -5,7 +5,7 @@
   .container {
     p {
       text-align: center;
-      font-size: 4rem;
+      // font-size: 4rem;
       font-weight: bold;
       color: $light;
       -webkit-background-clip: text;
@@ -14,26 +14,17 @@
       background-image: linear-gradient(305deg, #e2494c, #2f4858, cyan);
       text-transform: uppercase;
       letter-spacing: 5px;
-      min-height: 100px;
-      /* Apply the animation to the element */
-      // &::after {
-      //   content: "";
-      //   display: inline-block;
-      //   width: 0;
-      //   animation: typing 2s steps(30, end);
-      //   overflow: hidden;
-      //   white-space: nowrap;
-      //   border-right: 2px solid #2f4858; /* Adjust the color and size as needed */
-      // }
-      // /* Define the typing animation */
-      // @keyframes typing {
-      //   from {
-      //     width: 0;
-      //   }
-      //   to {
-      //     width: 100%;
-      //   }
-      // }
+      min-height: 200px;
+      @media #{$minSmall} {
+        font-size: 4rem;
+      }
+      
+      @media #{$maxMobile} {
+        font-size: 2rem;
+        line-height: 2;
+        min-height: 200px;
+        
+      }
     }
   }
 }

@@ -1,17 +1,27 @@
 @use "../utils/variables" as *;
 .section-container {
-  background-color: $darkerGray;
+  // background-color: $darkerGray;
   border-radius: 10px;
   color: $darkBlueColor;
   margin-bottom: 20px;
   margin-top: 20px;
+  display: none;
   //
-  background: rgba(209, 209, 209, 0.25);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  // background: rgba(209, 209, 209, 0.25);
+  // box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  // backdrop-filter: blur(4px);
+  // -webkit-backdrop-filter: blur(4px);
+  // border-radius: 10px;
+  // border: 1px solid rgba(255, 255, 255, 0.18);
+  &.show {
+    display: inherit;
+    background: rgba(209, 209, 209, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
   .question-container {
     display: flex;
     align-items: center;
@@ -20,7 +30,7 @@
     .title-conatiner {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: space-evenly;
       width: 100%;
       padding: 20px;
       font-weight: bold;
@@ -39,9 +49,10 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      // display: none;
+      display: none;
+      padding: 10px 15px;
       &.active {
-        // display: flex;
+        display: flex;
       }
     }
     .answer-header {
@@ -127,19 +138,12 @@
     .buttons {
       order: 1;
       padding: 20px 0;
+      width: 100%;
+      text-align: center;
       button {
-        background-color: $darkBlueColor;
-        color: $light;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 6px;
-        cursor: pointer;
-        transition: $primaryTrantion;
-        &:hover {
-          background-color: $darkGray;
-        }
       }
       .next {
+        width: 90%;
       }
       .previous {
       }

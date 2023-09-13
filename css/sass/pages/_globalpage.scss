@@ -1,7 +1,7 @@
 @use "../utils/variables" as *;
 body {
   background-color: $light;
-//   background: rgba(226, 73, 76, 1);
+  //   background: rgba(226, 73, 76, 1);
   background: linear-gradient(
     135deg,
     rgba(226, 73, 76, 1),
@@ -20,4 +20,25 @@ ol {
 }
 a {
   text-decoration: none;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: $lightGray;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $darkBlueColor;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $darkGray;
 }

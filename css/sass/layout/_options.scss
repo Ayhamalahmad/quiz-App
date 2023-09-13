@@ -1,5 +1,5 @@
 @use "../utils/variables" as *;
-$number-of-items: 5;
+$number-of-items: 6;
 .container {
   
   .options {
@@ -11,6 +11,20 @@ $number-of-items: 5;
     margin: 20px 0;
     color: $darkerGray;
     text-transform: capitalize;
+    @media #{$maxSmall} {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    @media #{$minSmall} {
+      font-size: 4rem;
+    }
+    
+    @media #{$maxMobile} {
+      font-size: 2rem;
+      line-height: 2;
+      min-height: 200px;
+    }
     .op {
       opacity: 0;
       transition: all 0.3s ease-in-out;
@@ -18,6 +32,7 @@ $number-of-items: 5;
       border-radius: 10px;
       background-color: $darkerGray;
       color: $darkBlueColor;
+      width: fit-content;
     }
     .op.active {
       opacity: 1;

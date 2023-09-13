@@ -1,6 +1,19 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Rubik+Iso&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+.btn {
+  background-color: #2f4858;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.btn:hover {
+  background-color: #888;
+}
+
 body {
   background-color: #fff;
   background: linear-gradient(135deg, rgb(226, 73, 76), rgb(255, 255, 255));
@@ -17,6 +30,28 @@ ol {
 
 a {
   text-decoration: none;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #ddd;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #2f4858;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #888;
 }
 
 * {
@@ -52,7 +87,6 @@ a {
 }
 .header .container p {
   text-align: center;
-  font-size: 4rem;
   font-weight: bold;
   color: #fff;
   -webkit-background-clip: text;
@@ -61,8 +95,19 @@ a {
   background-image: linear-gradient(305deg, #e2494c, #2f4858, cyan);
   text-transform: uppercase;
   letter-spacing: 5px;
-  min-height: 100px;
-  /* Apply the animation to the element */
+  min-height: 200px;
+}
+@media (min-width:768px) {
+  .header .container p {
+    font-size: 4rem;
+  }
+}
+@media (max-width:767px) {
+  .header .container p {
+    font-size: 2rem;
+    line-height: 2;
+    min-height: 200px;
+  }
 }
 
 .container .options {
@@ -75,6 +120,25 @@ a {
   color: #d1d1d1;
   text-transform: capitalize;
 }
+@media (max-width:991px) {
+  .container .options {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media (min-width:768px) {
+  .container .options {
+    font-size: 4rem;
+  }
+}
+@media (max-width:767px) {
+  .container .options {
+    font-size: 2rem;
+    line-height: 2;
+    min-height: 200px;
+  }
+}
 .container .options .op {
   opacity: 0;
   transition: all 0.3s ease-in-out;
@@ -82,6 +146,8 @@ a {
   border-radius: 10px;
   background-color: #d1d1d1;
   color: #2f4858;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 .container .options .op.active {
   opacity: 1;
@@ -135,6 +201,13 @@ a {
 .container .options .op-5.active {
   display: inherit;
 }
+.container .options .op-6 {
+  padding-left: 10px;
+  display: none;
+}
+.container .options .op-6.active {
+  display: inherit;
+}
 
 .container .animate-se {
   display: flex;
@@ -156,6 +229,25 @@ a {
   color: #2f4858;
   flex-direction: row-reverse;
   align-items: center;
+}
+@media (max-width:991px) {
+  .container .difficulty {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media (min-width:768px) {
+  .container .difficulty {
+    font-size: 4rem;
+  }
+}
+@media (max-width:767px) {
+  .container .difficulty {
+    font-size: 2rem;
+    line-height: 2;
+    min-height: 200px;
+  }
 }
 .container .difficulty .di {
   opacity: 0;
@@ -207,10 +299,15 @@ a {
 .options-selection {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 }
 .options-selection .instruction-text {
   text-align: start;
-  color: #ddd;
+  color: #2f4858;
+  font-size: 20px;
+  line-height: 2;
 }
 .options-selection .dropdowns {
   display: flex;
@@ -239,6 +336,12 @@ a {
   padding: 10px 20px;
   border-radius: 10px;
   gap: 20px;
+  border: none;
+  transition: all 0.3s ease-in-out;
+}
+.options-selection .dropdowns .dropdown button:hover {
+  background-color: #2f4858;
+  color: #fff;
 }
 .options-selection .dropdowns .dropdown button p {
   margin: 0;
@@ -295,11 +398,14 @@ a {
   display: block;
 }
 .section-container {
-  background-color: #d1d1d1;
   border-radius: 10px;
   color: #2f4858;
   margin-bottom: 20px;
   margin-top: 20px;
+  display: none;
+}
+.section-container.show {
+  display: inherit;
   background: rgba(209, 209, 209, 0.25);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(4px);
@@ -316,7 +422,7 @@ a {
 .section-container .question-container .title-conatiner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   width: 100%;
   padding: 20px;
   font-weight: bold;
@@ -331,6 +437,11 @@ a {
   align-items: center;
   justify-content: center;
   gap: 10px;
+  display: none;
+  padding: 10px 15px;
+}
+.section-container .question-container .question-answer-container.active {
+  display: flex;
 }
 .section-container .question-container .answer-choices {
   width: 100%;
@@ -405,18 +516,11 @@ a {
 .section-container .question-container .buttons {
   order: 1;
   padding: 20px 0;
+  width: 100%;
+  text-align: center;
 }
-.section-container .question-container .buttons button {
-  background-color: #2f4858;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-}
-.section-container .question-container .buttons button:hover {
-  background-color: #888;
+.section-container .question-container .buttons .next {
+  width: 90%;
 }
 .result {
   display: flex;

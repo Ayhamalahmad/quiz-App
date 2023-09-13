@@ -2,9 +2,15 @@
 .options-selection {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
   .instruction-text {
     text-align: start;
-    color: $lightGray;
+    color: $darkBlueColor;
+    font-size: 20px;
+    line-height: 2;
+
   }
   .dropdowns {
     display: flex;
@@ -32,6 +38,12 @@
         padding: 10px 20px;
         border-radius: 10px;
         gap: 20px;
+        border: none;
+        transition: $primaryTrantion;
+        &:hover {
+          background-color: $darkBlueColor;
+          color: $light;
+        }
         p {
           margin: 0;
         }

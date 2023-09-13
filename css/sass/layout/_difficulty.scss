@@ -21,6 +21,21 @@ $number-of-items: 3;
     color: $darkBlueColor;
     flex-direction: row-reverse;
     align-items: center;
+    @media #{$maxSmall} {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    @media #{$minSmall} {
+      font-size: 4rem;
+    }
+    
+    @media #{$maxMobile} {
+      font-size: 2rem;
+      line-height: 2;
+      min-height: 200px;
+      
+    }
     .di {
       opacity: 0;
       transition: all 0.3s ease-in-out;
