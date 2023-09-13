@@ -140,12 +140,26 @@
       padding: 20px 0;
       width: 100%;
       text-align: center;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 20px;
       button {
       }
       .next {
         width: 90%;
+        &.disabled{
+          display: none;
+          cursor: not-allowed;
+        }
       }
       .previous {
+      }
+      .show-result{
+        display: none;
+        &.show{
+          display: inherit;
+        }
       }
     }
   }

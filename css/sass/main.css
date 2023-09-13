@@ -518,35 +518,107 @@ a {
   padding: 20px 0;
   width: 100%;
   text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
 }
 .section-container .question-container .buttons .next {
   width: 90%;
 }
+.section-container .question-container .buttons .next.disabled {
+  display: none;
+  cursor: not-allowed;
+}
+.section-container .question-container .buttons .show-result {
+  display: none;
+}
+.section-container .question-container .buttons .show-result.show {
+  display: inherit;
+}
+
 .result {
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-color: #888;
-  color: white;
+  background-color: rgb(209, 209, 209);
+  color: #fff;
+  border-radius: 10px;
   gap: 20px;
   margin: 20px 0;
+  display: none;
+}
+.result.show {
+  display: flex;
+}
+.result h1 {
+  text-align: center;
+  text-transform: capitalize;
+  letter-spacing: 3px;
+  color: #2f4858;
 }
 .result .contanier-Of-selected {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: center;
+  align-items: start;
   width: 100%;
   padding: 10px;
+  gap: 4rem;
 }
-.result .contanier-Of-selected .correct, .result .contanier-Of-selected .incorrect {
+@media (max-width:991px) {
+  .result .contanier-Of-selected {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.result .contanier-Of-selected .corrects,
+.result .contanier-Of-selected .incorrects {
   padding: 10px;
   border-radius: 5px;
 }
-.result .contanier-Of-selected .correct {
-  background-color: #007C4D;
+.result .contanier-Of-selected .corrects h1,
+.result .contanier-Of-selected .incorrects h1 {
+  color: #fff;
 }
-.result .contanier-Of-selected .incorrect {
-  background-color: #AB0000;
+.result .contanier-Of-selected .corrects div:not(:last-child),
+.result .contanier-Of-selected .incorrects div:not(:last-child) {
+  margin-bottom: 10px;
+}
+.result .contanier-Of-selected .corrects {
+  width: 50%;
+  background: rgba(0, 124, 77, 0.9);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+@media (max-width:991px) {
+  .result .contanier-Of-selected .corrects {
+    width: 90%;
+  }
+}
+.result .contanier-Of-selected .incorrects {
+  width: 50%;
+  background: rgba(171, 0, 0, 0.9);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+@media (max-width:991px) {
+  .result .contanier-Of-selected .incorrects {
+    width: 90%;
+  }
+}
+.result .num-correct {
+  padding: 10px;
+  order: -1;
+  margin-top: 5px;
+  font-size: 1.5rem;
+  letter-spacing: 3px;
+  color: #2f4858;
 }
 
 /*Start Footer*/

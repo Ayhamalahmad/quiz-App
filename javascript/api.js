@@ -9,12 +9,17 @@ let questionNumber = document.querySelector(".question-container .num");
 let currentquestionNumber = document.querySelector(
   ".question-container .current-question"
 );
-let questionsTextOfNum=document.querySelector('.current-question .question')
+let questionsTextOfNum = document.querySelector(".current-question .question");
 let buttonsContainer = document.querySelectorAll(".buttons button");
 let getquestionAnswerContainer = document.querySelectorAll(
   ".question-answer-container"
 );
+let corrects = document.querySelector(".corrects");
+let incorrects = document.querySelector(".incorrects");
+// buttons
+let showResult = document.querySelector(".show-result");
 let start = document.querySelector(".start");
+let next = document.querySelector(".next");
 // Vars
 let questionsDivs;
 let clickedChoice = [];
@@ -114,7 +119,7 @@ start.addEventListener("click", () => {
         // Create an unordered list for answer choices
         const answerList = document.createElement("ul");
         answerList.classList.add("answer-choices");
-        answerList.id="answer-choices"
+        answerList.id = "answer-choices";
 
         // Create list items for answer choices and add them to the list
         const choices = [result.correct_answer, ...result.incorrect_answers];
@@ -194,6 +199,9 @@ buttonsContainer.forEach((button) => {
     // Check  Answer
     if (currentIndex === numberOfQ - 1) {
       checkAnswer();
+      next.classList.add("disabled");
+    } else {
+      next.classList.remove("disabled");
     }
   });
 });
@@ -235,52 +243,115 @@ function checkAnswer() {
         selectedRadioInputs.push(radioInput);
 
         // Create a container div to display the selected input and its status
-        let contanierOfSelected = document.createElement("div");
-        contanierOfSelected.classList.add("contanier-Of-selected");
-        // Create a div to display the selected input's value (answer)
-        let selectedInput = document.createElement("div");
-        selectedInput.textContent = radioInput.dataset.answer;
-        selectedInput.classList.add("selected");
-
+        // let contanierOfSelected = document.createElement("div");
+        // contanierOfSelected.classList.add("contanier-Of-selected");
+        // Create a div to display the correct selected input's value (answer)
+        let selectedInputCorrect = document.createElement("div");
         // Create a div to display whether the answer is correct or incorrect
         let stute = document.createElement("div");
+        // Create a div to display the Incorrect selected input's value (answer)
+        let selectedInputIncorrect = document.createElement("div");
+
+        //
+        // let InCorrects = document.createElement("div");
+        // InCorrects.classList.add("incorrects");
+        //
+        // let corrects = document.createElement("div");
+        // corrects.classList.add("corrects");
         if (radioInput.dataset.answer[index] === correctAnswer[index]) {
           stute.textContent = "correct";
           stute.classList.add("correct");
+          selectedInputCorrect.textContent = radioInput.dataset.answer;
+          selectedInputCorrect.classList.add("selected_correct");
+          corrects.appendChild(selectedInputCorrect);
         } else {
           stute.classList.add("incorrect");
           stute.textContent = "incorrect";
+          selectedInputIncorrect.textContent = radioInput.dataset.answer;
+          selectedInputIncorrect.classList.add("selected_incorrect");
+          incorrects.appendChild(selectedInputIncorrect);
         }
 
         // Create a div to display the number of correct answers out of total questions
 
         // Append the created elements to the result container (resultContaoner assumed to be defined elsewhere)
-        contanierOfSelected.appendChild(selectedInput);
-        contanierOfSelected.appendChild(stute);
-        resultContaoner.appendChild(contanierOfSelected);
+        // contanierOfSelected.appendChild(InCorrects);
+        // contanierOfSelected.appendChild(corrects);
+        // contanierOfSelected.appendChild(stute);
+        // resultContaoner.appendChild(InCorrects);
+        
+        // resultContaoner.appendChild(contanierOfSelected);
       }
     }
   });
+  //
   // Check if the current question is the last question
   if (currentIndex === numberOfQ - 1) {
-    // Create a div element to display the number of correct answers
-    let correctQuestions = document.createElement("div");
-    // Add  num-correct to the div
-    correctQuestions.classList.add("num-correct");
-    // Set the text content of the div
-    correctQuestions.textContent = `${selectedRadioInputs.length} from ${numberOfQ} correct`;
-    // Append the div to the result container
-    resultContaoner.appendChild(correctQuestions);
+    // // Create a div element to display the number of correct answers
+    // let correctQuestions = document.createElement("div");
+    // // Add  num-correct to the div
+    // correctQuestions.classList.add("num-correct");
+    // // Set the text content of the div
+    // correctQuestions.textContent = `${selectedRadioInputs.length} from ${numberOfQ} correct`;
+    // // Append the div to the result container
+    // resultContaoner.appendChild(correctQuestions);
+    // show  button show Result
+    showResult.classList.add("show");
+  }
+
+  // Select all question-answer-container elements
+  const questionAnswerContainers = document.querySelectorAll(
+    ".question-answer-container"
+  );
+
+  // Get the last question-answer-container
+  const lastQuestionAnswerContainer =
+    questionAnswerContainers[questionAnswerContainers.length - 1];
+
+  if (lastQuestionAnswerContainer) {
+    // Check if a specific radio input within the last container is checked
+    const radioInput = lastQuestionAnswerContainer.querySelector(
+      'input[type="radio"]:checked'
+    );
+    // show Result
+    showResult.addEventListener("click", () => {
+      resultContaoner.classList.add("show");
+      showResult.classList.remove("show");
+      // Hidde Questions
+      QContainer.classList.remove("show");
+      // Create a div element to display the number of correct answers
+      let correctQuestions = document.createElement("div");
+      // Add  num-correct to the div
+      correctQuestions.classList.add("num-correct");
+      // Set the text content of the div
+      if (selectedRadioInputs.length !== 0) {
+        correctQuestions.textContent = `${selectedRadioInputs.length} from ${numberOfQ} answered `;
+      } else {
+        correctQuestions.textContent = "No questions have been answered yet";
+      }
+      // Append the div to the result container
+      resultContaoner.appendChild(correctQuestions);
+    });
+    if (radioInput) {
+      console.log(
+        "The specific radio input in the last container is checked:",
+        radioInput.value
+      );
+    } else {
+      console.log("No radio input is checked in the last container.");
+    }
+  } else {
+    console.log("No question-answer-container found.");
   }
 }
 
 // Function to reset the application
 function resetApplication() {
-// Hidde  Questions
+  // Hidde  Questions
   QContainer.classList.remove("show");
   // Reset variables to their initial values
   selectedCategoryId = null;
-  currentIndex=0;
+  currentIndex = 0;
   // numberOfQ = 10;
   difficultyLevel = null;
   apiUrl = `https://opentdb.com/api.php?amount=${numberOfQ}`;
@@ -291,7 +362,7 @@ function resetApplication() {
   const questionTextElements = document.querySelectorAll(".question-text");
   const answerHeaderElements = document.querySelectorAll(".answer-header");
   const answerChoicesElements = document.querySelectorAll(".answer-choices");
-  const contanierOfSelected = document.querySelectorAll(
+  const contanierOfSelectedCorrect = document.querySelectorAll(
     ".contanier-Of-selected"
   );
   const numCorrect = document.querySelectorAll(".num-correct");
@@ -308,7 +379,7 @@ function resetApplication() {
   answerChoicesElements.forEach((element) => {
     element.remove();
   });
-  contanierOfSelected.forEach((element) => {
+  contanierOfSelectedCorrect.forEach((element) => {
     element.remove();
   });
   numCorrect.forEach((element) => {
@@ -317,6 +388,6 @@ function resetApplication() {
   questionsDivs.forEach((element) => {
     element.remove();
   });
-    // Clear the current question number display
+  // Clear the current question number display
   currentquestionNumber.textContent = "";
 }
