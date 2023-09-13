@@ -21,7 +21,7 @@
     gap: 2rem;
     position: relative;
     @media #{$maxMobile} {
-    justify-content: start;
+    // justify-content: start;
     }
     // dropdown golbal
     .dropdown {
@@ -41,7 +41,7 @@
         border: none;
         transition: $primaryTrantion;
         &:hover {
-          background-color: $primary;
+          background-color: $Secondary;
           color: $darkBlueColor;
         }
         p {
@@ -59,7 +59,7 @@
       }
       .dropdown-options {
         display: none;
-        background-color: $darkerGray;
+        background-color: $Secondary;
         border-radius: 22px;
         color: $darkBlueColor;
         opacity: 0;
@@ -89,7 +89,7 @@
           border-radius: 10px;
           &:hover {
             background-color: $darkBlueColor;
-            color: $darkerGray;
+            color: $light;
           }
           &.inactive {
             display: none;

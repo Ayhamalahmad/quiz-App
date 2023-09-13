@@ -11,7 +11,8 @@
   transition: all 0.3s ease-in-out;
 }
 .btn:hover {
-  background-color: #888;
+  background-color: #FFE194;
+  color: #4C4C6D;
 }
 
 body {
@@ -83,10 +84,6 @@ a {
 
 .header {
   transition: all 0.3s ease-in-out;
-  /*
-  * Created with https://www.css-gradient.com
-  * Gradient link: https://www.css-gradient.com/?c1=4c4c6d&c2=319c81&gt=l&gd=dcr
-  */
 }
 .header .container p {
   text-align: center;
@@ -98,7 +95,7 @@ a {
   background-image: linear-gradient(270deg, #4C4C6D, #319C81);
   text-transform: uppercase;
   letter-spacing: 5px;
-  min-height: 200px;
+  min-height: 137px;
 }
 @media (min-width:768px) {
   .header .container p {
@@ -109,7 +106,6 @@ a {
   .header .container p {
     font-size: 2rem;
     line-height: 2;
-    min-height: 200px;
   }
 }
 
@@ -228,7 +224,6 @@ a {
   font-weight: bold;
   gap: 20px;
   overflow: hidden;
-  margin: 20px 0;
   color: #4C4C6D;
   flex-direction: row-reverse;
   align-items: center;
@@ -321,11 +316,6 @@ a {
   gap: 2rem;
   position: relative;
 }
-@media (max-width:767px) {
-  .options-selection .dropdowns {
-    justify-content: start;
-  }
-}
 .options-selection .dropdowns .dropdown button {
   background-color: #4C4C6D;
   color: #E8F6EF;
@@ -343,7 +333,7 @@ a {
   transition: all 0.3s ease-in-out;
 }
 .options-selection .dropdowns .dropdown button:hover {
-  background-color: #E8F6EF;
+  background-color: #FFE194;
   color: #4C4C6D;
 }
 .options-selection .dropdowns .dropdown button p {
@@ -361,7 +351,7 @@ a {
 }
 .options-selection .dropdowns .dropdown .dropdown-options {
   display: none;
-  background-color: #d1d1d1;
+  background-color: #FFE194;
   border-radius: 22px;
   color: #4C4C6D;
   opacity: 0;
@@ -392,7 +382,7 @@ a {
 }
 .options-selection .dropdowns .dropdown .dropdown-options .option:hover {
   background-color: #4C4C6D;
-  color: #d1d1d1;
+  color: #fff;
 }
 .options-selection .dropdowns .dropdown .dropdown-options .option.inactive {
   display: none;
@@ -452,6 +442,11 @@ a {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* يعرض عنصرين في كل صف */
   align-items: center;
+}
+@media (max-width:767px) {
+  .section-container .question-container .answer-choices {
+    grid-template-columns: none;
+  }
 }
 .section-container .question-container .answer-choices .answer-choice {
   width: 100%;

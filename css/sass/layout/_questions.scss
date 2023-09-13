@@ -56,6 +56,9 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr); /* يعرض عنصرين في كل صف */
       align-items: center;
+      @media #{$maxMobile} {
+        grid-template-columns:none;
+      }
       // gap: 10px; /
       .answer-choice {
         width: 100%;

@@ -9,6 +9,7 @@
     cursor: pointer;
     transition: $primaryTrantion;
     &:hover {
-      background-color: $darkGray;
+      background-color: $Secondary;
+      color: $darkBlueColor;
     }
   }

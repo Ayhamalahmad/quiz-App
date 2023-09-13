@@ -27,6 +27,8 @@ let selectedRadioInputs = [];
 let currentIndex = 0;
 let currentId = 0;
 let correctAnswer = [];
+let number=1;
+let number2=1;
 let numberOfQ = 10;
 let selectedCategoryId;
 let difficultyLevel;
@@ -35,7 +37,6 @@ let apiUrl = `https://opentdb.com/api.php?amount=${numberOfQ}`;
 const apiUrlCategories = "https://opentdb.com/api_category.php";
 let promises = [
   fetch(apiUrlCategories).then((response) => response.json()),
-  // fetch(apiUrl).then((response) => response.json()),
 ];
 Promise.all(promises)
   .then((results) => {
@@ -52,10 +53,6 @@ Promise.all(promises)
       let anOption = document.createElement("div");
       anOption.classList.add("op");
       anOption.textContent = element.name;
-      // categoryOpAnText.forEach((op)=>{
-      //   op.textContent=element.name;
-      // })
-      // categoryOpAnText.textContent=element.name;
       // Add id to the <div>
       option.setAttribute("id", element.id);
       // Append the <div> to the target element
@@ -133,7 +130,6 @@ start.addEventListener("click", () => {
           input.type = "radio";
           input.classList.add("aaa");
           input.dataset.answer = choiceText;
-          // input.name = `question-${currentId}`;
           input.id = `choice-${currentId}`; // Use a unique ID for each choice
           const label = document.createElement("label");
           label.setAttribute("for", `choice-${currentId}`); // Set the 'for' attribute to match the 'id' of the associated input
@@ -241,60 +237,32 @@ function checkAnswer() {
       if (!selectedRadioInputs.includes(radioInput)) {
         // Add the selected radio input to the selectedRadioInputs array
         selectedRadioInputs.push(radioInput);
-
-        // Create a container div to display the selected input and its status
-        // let contanierOfSelected = document.createElement("div");
-        // contanierOfSelected.classList.add("contanier-Of-selected");
         // Create a div to display the correct selected input's value (answer)
         let selectedInputCorrect = document.createElement("div");
         // Create a div to display whether the answer is correct or incorrect
         let stute = document.createElement("div");
         // Create a div to display the Incorrect selected input's value (answer)
         let selectedInputIncorrect = document.createElement("div");
-
-        //
-        // let InCorrects = document.createElement("div");
-        // InCorrects.classList.add("incorrects");
-        //
-        // let corrects = document.createElement("div");
         // corrects.classList.add("corrects");
         if (radioInput.dataset.answer[index] === correctAnswer[index]) {
           stute.textContent = "correct";
           stute.classList.add("correct");
-          selectedInputCorrect.textContent = radioInput.dataset.answer;
+          selectedInputCorrect.textContent = `${number2++} - ${radioInput.dataset.answer}`;
           selectedInputCorrect.classList.add("selected_correct");
           corrects.appendChild(selectedInputCorrect);
         } else {
           stute.classList.add("incorrect");
           stute.textContent = "incorrect";
-          selectedInputIncorrect.textContent = radioInput.dataset.answer;
+          selectedInputIncorrect.textContent =`${number++} - ${radioInput.dataset.answer}`;
           selectedInputIncorrect.classList.add("selected_incorrect");
           incorrects.appendChild(selectedInputIncorrect);
         }
-
-        // Create a div to display the number of correct answers out of total questions
-
-        // Append the created elements to the result container (resultContaoner assumed to be defined elsewhere)
-        // contanierOfSelected.appendChild(InCorrects);
-        // contanierOfSelected.appendChild(corrects);
-        // contanierOfSelected.appendChild(stute);
-        // resultContaoner.appendChild(InCorrects);
-        
-        // resultContaoner.appendChild(contanierOfSelected);
       }
     }
   });
   //
   // Check if the current question is the last question
   if (currentIndex === numberOfQ - 1) {
-    // // Create a div element to display the number of correct answers
-    // let correctQuestions = document.createElement("div");
-    // // Add  num-correct to the div
-    // correctQuestions.classList.add("num-correct");
-    // // Set the text content of the div
-    // correctQuestions.textContent = `${selectedRadioInputs.length} from ${numberOfQ} correct`;
-    // // Append the div to the result container
-    // resultContaoner.appendChild(correctQuestions);
     // show  button show Result
     showResult.classList.add("show");
   }
@@ -352,7 +320,6 @@ function resetApplication() {
   // Reset variables to their initial values
   selectedCategoryId = null;
   currentIndex = 0;
-  // numberOfQ = 10;
   difficultyLevel = null;
   apiUrl = `https://opentdb.com/api.php?amount=${numberOfQ}`;
   questionNumber.textContent = "";
@@ -388,6 +355,8 @@ function resetApplication() {
   questionsDivs.forEach((element) => {
     element.remove();
   });
+  //  Hidde  resultContaoner
+  resultContaoner.classList.remove("show")
   // Clear the current question number display
   currentquestionNumber.textContent = "";
 }

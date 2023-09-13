@@ -1,14 +1,6 @@
 @use "../utils/variables" as *;
 .header {
-  transition: all 0.3s ease-in-out;
-
-
-  /*
-* Created with https://www.css-gradient.com
-* Gradient link: https://www.css-gradient.com/?c1=4c4c6d&c2=319c81&gt=l&gd=dcr
-*/
-// background: #4C4C6D;
-// background: linear-gradient(270deg, #4C4C6D, #319C81);
+  transition: $primaryTrantion;
   .container {
     p {
       text-align: center;
@@ -21,7 +13,7 @@
       background-image: linear-gradient(270deg, #4C4C6D, #319C81);
       text-transform: uppercase;
       letter-spacing: 5px;
-      min-height: 200px;
+      min-height: 137px;
       @media #{$minSmall} {
         font-size: 4rem;
       }
@@ -29,8 +21,6 @@
       @media #{$maxMobile} {
         font-size: 2rem;
         line-height: 2;
-        min-height: 200px;
-        
       }
     }
   }
