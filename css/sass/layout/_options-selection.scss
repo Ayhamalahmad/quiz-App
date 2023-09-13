@@ -27,8 +27,8 @@
     .dropdown {
       // position: relative;
       button {
-        background-color: $darkerGray;
-        color: $darkBlueColor;
+        background-color: $darkBlueColor;
+        color: $primary;
         cursor: pointer;
         width: fit-content;
         display: flex;
@@ -41,8 +41,8 @@
         border: none;
         transition: $primaryTrantion;
         &:hover {
-          background-color: $darkBlueColor;
-          color: $light;
+          background-color: $primary;
+          color: $darkBlueColor;
         }
         p {
           margin: 0;

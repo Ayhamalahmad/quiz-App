@@ -1,12 +1,12 @@
 @use "../utils/variables" as *;
 body {
-  background-color: $light;
+  background-color: #E8F6EF;
   //   background: rgba(226, 73, 76, 1);
-  background: linear-gradient(
-    135deg,
-    rgba(226, 73, 76, 1),
-    rgba(255, 255, 255, 1)
-  );
+  // background: linear-gradient(
+  //   135deg,
+  //   rgba(226, 73, 76, 1),
+  //   rgba(255, 255, 255, 1)
+  // );
   min-height: 100vh;
   font: {
     family: Tahoma;

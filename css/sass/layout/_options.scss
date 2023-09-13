@@ -9,7 +9,7 @@ $number-of-items: 6;
     gap: 20px;
     overflow: hidden;
     margin: 20px 0;
-    color: $darkerGray;
+    color: $darkBlueColor;
     text-transform: capitalize;
     @media #{$maxSmall} {
       flex-direction: column;
@@ -30,7 +30,7 @@ $number-of-items: 6;
       transition: all 0.3s ease-in-out;
       padding: 10px 20px;
       border-radius: 10px;
-      background-color: $darkerGray;
+      background-color: $Secondary;
       color: $darkBlueColor;
       width: fit-content;
     }
