@@ -76,27 +76,6 @@ function startTextAnimation() {
 // Call the function to start the text animation
 startTextAnimation();
 
-// // options
-// let options = document.querySelectorAll(".op");
-// let difficultys = document.querySelectorAll(".di");
-// let currentIndex = 0;
-// // Function to update the active option
-// const updateActiveOption = (section) => {
-//   // Remove the "active" class from the current active option
-//   section[currentIndex].classList.remove("active");
-//   // Increment the index or reset it if it exceeds the number of options
-//   currentIndex = (currentIndex + 1) % section.length;
-//   // Add the "active" class to the new active option
-//   section[currentIndex].classList.add("active");
-// };
-// // Set an interval to change the active option every 2 seconds (2000 milliseconds)
-// setInterval(() => {
-//   updateActiveOption(options);
-// }, 2000);
-// setInterval(() => {
-//   updateActiveOption(difficultys);
-// }, 2000);
-
 // Function to update the active option for both category and difficulty
 const updateActiveOptions = () => {
   // Find the currently active category and difficulty options
