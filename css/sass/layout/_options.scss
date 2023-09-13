@@ -9,7 +9,7 @@ $number-of-items: 6;
     gap: 20px;
     overflow: hidden;
     margin: 20px 0;
-    color: $darkBlueColor;
+    color: $brandBlue;
     text-transform: capitalize;
     @media #{$maxSmall} {
       flex-direction: column;
@@ -31,7 +31,7 @@ $number-of-items: 6;
       padding: 10px 20px;
       border-radius: 10px;
       background-color: $Secondary;
-      color: $darkBlueColor;
+      color: $brandBlue;
       width: fit-content;
     }
     .op.active {

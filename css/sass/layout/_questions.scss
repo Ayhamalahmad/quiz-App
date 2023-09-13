@@ -1,7 +1,7 @@
 @use "../utils/variables" as *;
 .section-container {
   border-radius: 10px;
-  color: $darkBlueColor;
+  color: $brandBlue;
   margin-bottom: 20px;
   margin-top: 20px;
   display: none;
@@ -75,7 +75,7 @@
           &:checked + label::after,
           :not(:checked):hover + label::after {
             content: "";
-            background-color: $darkBlueColor;
+            background-color: $brandBlue;
             width: 10px;
             height: 10px;
             position: absolute;
@@ -109,7 +109,7 @@
               opacity: 0.2;
             }
             :checked + label {
-              color: $darkBlueColor;
+              color: $brandBlue;
             }
             // &:not(:checked)::before{
             //   border: 1px solid $light;
@@ -120,7 +120,7 @@
             content: "";
             width: 16px;
             height: 16px;
-            border: 1px solid $darkBlueColor;
+            border: 1px solid $brandBlue;
             position: absolute;
             left: 7px;
             top: 50%;

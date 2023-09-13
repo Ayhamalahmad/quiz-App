@@ -7,7 +7,7 @@
   margin-top: 20px;
   .instruction-text {
     text-align: start;
-    color: $darkBlueColor;
+    color: $brandBlue;
     font-size: 20px;
     line-height: 2;
 
@@ -27,7 +27,7 @@
     .dropdown {
       // position: relative;
       button {
-        background-color: $darkBlueColor;
+        background-color: $brandBlue;
         color: $primary;
         cursor: pointer;
         width: fit-content;
@@ -42,7 +42,7 @@
         transition: $primaryTrantion;
         &:hover {
           background-color: $Secondary;
-          color: $darkBlueColor;
+          color: $brandBlue;
         }
         p {
           margin: 0;
@@ -61,7 +61,7 @@
         display: none;
         background-color: $Secondary;
         border-radius: 22px;
-        color: $darkBlueColor;
+        color: $brandBlue;
         opacity: 0;
         transition: $primaryTrantion;
         height: 200px;
@@ -88,7 +88,7 @@
           transition: $primaryTrantion;
           border-radius: 10px;
           &:hover {
-            background-color: $darkBlueColor;
+            background-color: $brandBlue;
             color: $light;
           }
           &.inactive {
@@ -149,7 +149,7 @@
 //     overflow: hidden;
 //     .dropdown-one-btn {
 //       background-color: $darkerGray;
-//       color: $darkBlueColor;
+//       color: $brandBlue;
 //       cursor: pointer;
 //       width: fit-content;
 //       display: flex;

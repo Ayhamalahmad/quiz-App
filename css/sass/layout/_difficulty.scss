@@ -18,7 +18,7 @@ $number-of-items: 3;
     gap: 20px;
     overflow: hidden;
     // margin: 20px 0;
-    color: $darkBlueColor;
+    color: $brandBlue;
     flex-direction: row-reverse;
     align-items: center;
     @media #{$maxSmall} {
@@ -42,7 +42,7 @@ $number-of-items: 3;
       background-color: $Secondary;
       padding: 10px 20px;
       border-radius: 10px;
-      color: $darkBlueColor;
+      color: $brandBlue;
     }
     .di.active {
       opacity: 1;

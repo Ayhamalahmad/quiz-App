@@ -1,7 +1,7 @@
 @use "../utils/variables" as *;
 
 .btn {
-    background-color: $darkBlueColor;
+    background-color: $brandBlue;
     color: $light;
     padding: 10px 20px;
     border: none;
@@ -10,6 +10,6 @@
     transition: $primaryTrantion;
     &:hover {
       background-color: $Secondary;
-      color: $darkBlueColor;
+      color: $brandBlue;
     }
   }
