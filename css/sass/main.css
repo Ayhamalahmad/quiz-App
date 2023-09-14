@@ -310,7 +310,7 @@ a {
 }
 .options-selection .dropdowns {
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   margin: 20px;
   flex-wrap: wrap;

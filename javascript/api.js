@@ -20,9 +20,9 @@ let incorrects = document.querySelector(".incorrects");
 let showResult = document.querySelector(".show-result");
 let start = document.querySelector(".start");
 let next = document.querySelector(".next");
+let closeBtn=document.querySelector(".close");
 // Vars
 let questionsDivs;
-let clickedChoice = [];
 let selectedRadioInputs = [];
 let currentIndex = 0;
 let currentId = 0;
@@ -163,14 +163,6 @@ if(data.results){
   // scroll to Questions container
   QContainer.scrollIntoView({ behavior: "smooth" });
 } 
-else{
-  // document.querySelector("spinner").style.display = "block";
-  // let spinner =document.createElement("div");
-  // spinner.classList.add("spinner");
-  // QContainer.appendChild(spinner);
-}
-      
-
       //set input element names
       handleInputName();
     })
@@ -185,10 +177,6 @@ buttonsContainer.forEach((button) => {
     // Check if "next" button is clicked and currentIndex is within bounds
     if (e.target.classList.contains("next") && currentIndex < numberOfQ - 1) {
       currentIndex++;
-    }
-    // Check if "previous" button is clicked and currentIndex is within bounds
-    else if (e.target.classList.contains("previous") && currentIndex > 0) {
-      currentIndex--;
     }
     // set input element names
     handleInputName();
@@ -276,7 +264,7 @@ function checkAnswer() {
   if (currentIndex === numberOfQ - 1) {
     // show  button show Result
     showResult.classList.add("show");
-  }
+  } 
 
   // Select all question-answer-container elements
   const questionAnswerContainers = document.querySelectorAll(
@@ -299,8 +287,7 @@ function checkAnswer() {
       resultContaoner.showModal();
       showResult.classList.remove("show");
       // Hidde Questions
-      QContainer.close();
-      // QContainer.classList.remove("show");
+      QContainer.classList.remove("show");
       // Create a div element to display the number of correct answers
       let correctQuestions = document.createElement("div");
       // Add  num-correct to the div
@@ -314,6 +301,7 @@ function checkAnswer() {
       // Append the div to the result container
       resultContaoner.appendChild(correctQuestions);
     });
+    // Note: The following code is related to the development progress and may be subject to changes or updates.
     if (radioInput) {
       console.log(
         "The specific radio input in the last container is checked:",
@@ -338,7 +326,6 @@ function resetApplication() {
   apiUrl = `https://opentdb.com/api.php?amount=${numberOfQ}`;
   questionNumber.textContent = "";
   currentquestionNumber.textContent = "";
-
   // Select all elements to remove
   const questionTextElements = document.querySelectorAll(".question-text");
   const answerHeaderElements = document.querySelectorAll(".answer-header");
@@ -374,3 +361,11 @@ function resetApplication() {
   // Clear the current question number display
   currentquestionNumber.textContent = "";
 }
+
+// Add a click event listener to the close button
+closeBtn.addEventListener("click",()=>{
+  // Remove the "show" class from resultContaoner to hide it
+  resultContaoner.classList.remove("show");
+  // Hidde the result Contaoner
+  resultContaoner.close();
+})
