@@ -1,5 +1,6 @@
 @use "../utils/variables" as *;
 body {
+  scroll-behavior: smooth;
   background-color: #E8F6EF;
   //   background: rgba(226, 73, 76, 1);
   // background: linear-gradient(

@@ -93,73 +93,83 @@ dropdownS.forEach((dropdown) => {
 // Function to fetch questions and initialize the program
 start.addEventListener("click", () => {
   // Show Questions
-  // QContainer.classList.add("show");
-  QContainer.showModal();
+  QContainer.classList.add("show");
+  // QContainer.show();
   console.log(apiUrl, numberOfQ, difficultyLevel, selectedCategoryId);
   fetch(apiUrl)
     .then((response) => response.json())
     .then((data) => {
       console.log("Data:", data);
+if(data.results){
+  data.results.forEach((result) => {
+    correctAnswer.push(result.correct_answer);
+    questionNumber.textContent = numberOfQ;
+    // Create a paragraph for the question text
+    const questionText = document.createElement("p");
+    questionText.classList.add("question-text");
+    questionText.textContent = result.question;
 
-      data.results.forEach((result) => {
-        correctAnswer.push(result.correct_answer);
-        questionNumber.textContent = numberOfQ;
-        // Create a paragraph for the question text
-        const questionText = document.createElement("p");
-        questionText.classList.add("question-text");
-        questionText.textContent = result.question;
+    // Create a header for answer choices
+    const answerHeader = document.createElement("h3");
+    answerHeader.classList.add("answer-header");
+    answerHeader.textContent = "Choose an answer:";
 
-        // Create a header for answer choices
-        const answerHeader = document.createElement("h3");
-        answerHeader.classList.add("answer-header");
-        answerHeader.textContent = "Choose an answer:";
+    // Create an unordered list for answer choices
+    const answerList = document.createElement("ul");
+    answerList.classList.add("answer-choices");
+    answerList.id = "answer-choices";
 
-        // Create an unordered list for answer choices
-        const answerList = document.createElement("ul");
-        answerList.classList.add("answer-choices");
-        answerList.id = "answer-choices";
+    // Create list items for answer choices and add them to the list
+    const choices = [result.correct_answer, ...result.incorrect_answers];
+    choices.forEach((choiceText) => {
+      const listItem = document.createElement("li");
+      listItem.classList.add("answer-choice");
+      // listItem.textContent = choiceText;
+      answerList.appendChild(listItem);
 
-        // Create list items for answer choices and add them to the list
-        const choices = [result.correct_answer, ...result.incorrect_answers];
-        choices.forEach((choiceText) => {
-          const listItem = document.createElement("li");
-          listItem.classList.add("answer-choice");
-          // listItem.textContent = choiceText;
-          answerList.appendChild(listItem);
+      const input = document.createElement("input");
+      input.type = "radio";
+      input.classList.add("aaa");
+      input.dataset.answer = choiceText;
+      input.id = `choice-${currentId}`; // Use a unique ID for each choice
+      const label = document.createElement("label");
+      label.setAttribute("for", `choice-${currentId}`); // Set the 'for' attribute to match the 'id' of the associated input
+      label.textContent = choiceText;
+      listItem.appendChild(input);
+      listItem.appendChild(label);
+      //Increment current ID
+      currentId++;
+    });
 
-          const input = document.createElement("input");
-          input.type = "radio";
-          input.classList.add("aaa");
-          input.dataset.answer = choiceText;
-          input.id = `choice-${currentId}`; // Use a unique ID for each choice
-          const label = document.createElement("label");
-          label.setAttribute("for", `choice-${currentId}`); // Set the 'for' attribute to match the 'id' of the associated input
-          label.textContent = choiceText;
-          listItem.appendChild(input);
-          listItem.appendChild(label);
-          //Increment current ID
-          currentId++;
-        });
-
-        // Add the created elements to the DOM
-        const questionContainer = document.querySelector(".question-container");
-        questionAnswerContainer = document.createElement("div");
-        questionAnswerContainer.classList.add("question-answer-container");
-        questionAnswerContainer.appendChild(questionText);
-        questionAnswerContainer.appendChild(answerHeader);
-        questionAnswerContainer.appendChild(answerList);
-        questionContainer.appendChild(questionAnswerContainer);
-        //select question answer container
-        questionsDivs = document.querySelectorAll(
-          ".question-container .question-answer-container"
-        );
-        // Update the active question
-        updateActiveQuestion();
-        // Display  current question Number
-        currentquestionNumber.textContent = `current question ${
-          currentIndex + 1
-        }`;
-      });
+    // Add the created elements to the DOM
+    const questionContainer = document.querySelector(".question-container");
+    questionAnswerContainer = document.createElement("div");
+    questionAnswerContainer.classList.add("question-answer-container");
+    questionAnswerContainer.appendChild(questionText);
+    questionAnswerContainer.appendChild(answerHeader);
+    questionAnswerContainer.appendChild(answerList);
+    questionContainer.appendChild(questionAnswerContainer);
+    //select question answer container
+    questionsDivs = document.querySelectorAll(
+      ".question-container .question-answer-container"
+    );
+    // Update the active question
+    updateActiveQuestion();
+    // Display  current question Number
+    currentquestionNumber.textContent = `current question ${
+      currentIndex + 1
+    }`;
+  });
+  // scroll to Questions container
+  QContainer.scrollIntoView({ behavior: "smooth" });
+} 
+else{
+  // document.querySelector("spinner").style.display = "block";
+  // let spinner =document.createElement("div");
+  // spinner.classList.add("spinner");
+  // QContainer.appendChild(spinner);
+}
+      
 
       //set input element names
       handleInputName();
