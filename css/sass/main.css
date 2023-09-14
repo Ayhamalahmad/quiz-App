@@ -362,6 +362,7 @@ a {
   overflow-y: auto;
   padding: 20px;
   margin-top: 10px;
+  margin-bottom: 15px;
   position: absolute;
   z-index: 99;
 }

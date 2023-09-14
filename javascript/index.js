@@ -104,10 +104,6 @@ setInterval(updateActiveOptions, 2000);
 const toggleClass = (element, className) => {
   element.classList.toggle(className);
 };
-// Function To Add class
-const addClass = (element, className) => {
-  element.classList.add(className);
-};
 // Add a click event listener to each dropdown button
 dropdownButtons.forEach((button, index) => {
   button.addEventListener("click", () => {
@@ -115,6 +111,18 @@ dropdownButtons.forEach((button, index) => {
     toggleClass(dropdownOptions[index], "active");
     // Toggle the 'active' class for the corresponding dropdown icons
     toggleClass(dropdownIcons[index], "active");
+      // Scroll the corresponding dropdown options into view smoothly
+    dropdownOptions[index].scrollIntoView({ behavior: "smooth" });
+    // Loop through all dropdownOptions and close those that are not the one clicked
+    for (let i = 0; i < dropdownOptions.length; i++) {
+      if (i !== index) {
+        // dropdown Options
+        dropdownOptions[i].classList.remove("active");
+        // dropdown Icons
+        dropdownIcons[i].classList.remove("active");
+        // If you want to close the corresponding icons as well, add this line:
+      }
+    }
   });
 });
 // Function to handle the click event for a dropdown
