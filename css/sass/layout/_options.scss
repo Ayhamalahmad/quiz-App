@@ -1,7 +1,9 @@
 @use "../utils/variables" as *;
 $number-of-items: 6;
+$number-of-difficulty-items: 3;
+
 .container {
-  
+  .difficulty,
   .options {
     display: flex;
     font-size: 4rem;
@@ -19,12 +21,13 @@ $number-of-items: 6;
     @media #{$minSmall} {
       font-size: 4rem;
     }
-    
+
     @media #{$maxMobile} {
       font-size: 2rem;
       line-height: 2;
       min-height: 200px;
     }
+    .di,
     .op {
       opacity: 0;
       transition: all 0.3s ease-in-out;
@@ -34,6 +37,7 @@ $number-of-items: 6;
       color: $brandBlue;
       width: fit-content;
     }
+    .di.active,
     .op.active {
       opacity: 1;
       transform: scale(0.9);
@@ -58,6 +62,38 @@ $number-of-items: 6;
         display: none;
       }
       .op-#{$i}.active {
+        display: inherit;
+      }
+    }
+  }
+  //difficulty
+  .difficulty {
+    margin: unset;
+    color: $brandBlue;
+    flex-direction: row-reverse;
+    align-items: center;
+    .di {
+    }
+    .di.active {
+    }
+    @keyframes slide-in-top {
+      0% {
+        transform: translateY(77px);
+        opacity: 0;
+        filter: blur(10px);
+      }
+
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    @for $i from 1 through $number-of-difficulty-items {
+      .di-#{$i} {
+        padding-left: 10px;
+        display: none;
+      }
+      .di-#{$i}.active {
         display: inherit;
       }
     }

@@ -68,10 +68,6 @@
         input {
           -webkit-appearance: none;
           appearance: none;
-          // &:hover {
-          //   background-color: $darkGray;
-          //   color: $light;
-          // }
           &:checked + label::after,
           :not(:checked):hover + label::after {
             content: "";
@@ -85,6 +81,12 @@
           &:not(:checked):hover:before {
             border: 1px solid $light;
           }
+          // 
+          &:not(:checked):hover + :hover::before {
+            border: 1px solid $light;
+
+          }
+          // 
         }
         label {
           padding: 10px 40px;
@@ -93,8 +95,8 @@
           transition: $primaryTrantion;
           position: relative;
           &:hover {
-            background-color: $darkGray;
-            color: $light;
+            background-color: $Secondary;
+            color: $brandBlue;
             &::after {
               transition: $primaryTrantion;
               content: "";
