@@ -93,7 +93,8 @@ dropdownS.forEach((dropdown) => {
 // Function to fetch questions and initialize the program
 start.addEventListener("click", () => {
   // Show Questions
-  QContainer.classList.add("show");
+  // QContainer.classList.add("show");
+  QContainer.showModal();
   console.log(apiUrl, numberOfQ, difficultyLevel, selectedCategoryId);
   fetch(apiUrl)
     .then((response) => response.json())
@@ -284,9 +285,11 @@ function checkAnswer() {
     // show Result
     showResult.addEventListener("click", () => {
       resultContaoner.classList.add("show");
+      resultContaoner.showModal();
       showResult.classList.remove("show");
       // Hidde Questions
-      QContainer.classList.remove("show");
+      QContainer.close();
+      // QContainer.classList.remove("show");
       // Create a div element to display the number of correct answers
       let correctQuestions = document.createElement("div");
       // Add  num-correct to the div
