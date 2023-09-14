@@ -284,6 +284,7 @@ function checkAnswer() {
     );
     // show Result
     showResult.addEventListener("click", () => {
+      // Show result
       resultContaoner.classList.add("show");
       resultContaoner.showModal();
       showResult.classList.remove("show");
