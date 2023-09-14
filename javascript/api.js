@@ -94,6 +94,11 @@ dropdownS.forEach((dropdown) => {
 start.addEventListener("click", () => {
   // Show Questions
   QContainer.classList.add("show");
+  // Check if the 'next' element contains the 'disabled' class.
+// If it does, remove the 'disabled' class to enable the element.
+  if(next.classList.contains("disabled")){
+    next.classList.remove("disabled");
+  }
   // QContainer.show();
   console.log(apiUrl, numberOfQ, difficultyLevel, selectedCategoryId);
   fetch(apiUrl)
@@ -195,9 +200,7 @@ buttonsContainer.forEach((button) => {
     if (currentIndex === numberOfQ - 1) {
       checkAnswer();
       next.classList.add("disabled");
-    } else {
-      next.classList.remove("disabled");
-    }
+    } 
   });
 });
 
@@ -368,4 +371,6 @@ closeBtn.addEventListener("click",()=>{
   resultContaoner.classList.remove("show");
   // Hidde the result Contaoner
   resultContaoner.close();
+  //reset Application 
+  resetApplication()
 })
